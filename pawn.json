@@ -1,0 +1,82 @@
+{
+	"user": "emmett-white",
+	"repo": "survive-time",
+	"entry": "gamemodes\\SurviveTime.pwn",
+	"output": "gamemodes\\SurviveTime.amx",
+	"dependencies": [
+		"sampctl/samp-stdlib",
+		"Zeex/samp-plugin-crashdetect",
+		"Zeex/samp-plugin-jit",
+		"pBlueG/SA-MP-MySQL",
+		"dakyskye/pawn-env",
+		"pawn-lang/YSI-Includes:5.4.102",
+		"samp-incognito/samp-streamer-plugin",
+		"IllidanS4/PawnPlus",
+		"AGraber/pawn-plus-mysql",
+		"AGraber/samp-async-dialogs",
+		"maddinat0r/sscanf",
+		"samp-incognito/samp-streamer-plugin"
+	],
+	"local": true,
+	"runtime": {
+		"version": "0.3.7",
+		"mode": "y_testing",
+		"rcon_password": "44",
+		"port": 8192,
+		"hostname": "SurviveTime | In process...",
+		"maxplayers": 20,
+		"language": "English",
+		"mapname": "San Andreas",
+		"weburl": "www.open.mp",
+		"gamemodetext": "RolePlay",
+		"announce": true,
+		"lanmode": false,
+		"query": true,
+		"rcon": false,
+		"logqueries": false,
+		"sleep": 5,
+		"maxnpc": 0,
+		"stream_rate": 1000,
+		"stream_distance": 200,
+		"onfoot_rate": 30,
+		"incar_rate": 30,
+		"weapon_rate": 30,
+		"chatlogging": true,
+		"timestamp": true,
+		"messageholelimit": 3000,
+		"messageslimit": 500,
+		"ackslimit": 3000,
+		"playertimeout": 10000,
+		"minconnectiontime": 0,
+		"lagcompmode": 1,
+		"connseedtime": 300000,
+		"db_logging": false,
+		"db_log_queries": false,
+		"conncookies": true,
+		"cookielogging": false,
+		"output": true
+	},
+	"builds": [
+		{
+			"name": "dev",
+			"version": "3.10.10",
+			"args": [
+				"-;+",
+				"-(+",
+				"-d3",
+				"-E",
+				"-Z"
+			],
+			"includes": [
+				"gamemodes/database",
+				"gamemodes/utils",
+				"gamemodes/core/ban",
+				"gamemodes/core/account",
+				"gamemodes/core/admin",
+				"gamemodes/core/player",
+				"gamemodes/core/player/warn"
+			],
+			"compiler": {}
+		}
+	]
+}
