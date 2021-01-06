@@ -15,7 +15,9 @@
 		"AGraber/pawn-plus-mysql",
 		"AGraber/samp-async-dialogs",
 		"maddinat0r/sscanf",
-		"samp-incognito/samp-streamer-plugin"
+		"samp-incognito/samp-streamer-plugin",
+		"emmett-white/survive-time",
+		"openmultiplayer/stdlib"
 	],
 	"local": true,
 	"runtime": {
@@ -74,7 +76,8 @@
 				"gamemodes/core/account",
 				"gamemodes/core/admin",
 				"gamemodes/core/player",
-				"gamemodes/core/player/warn"
+				"gamemodes/core/player/warn",
+				"gamemodes/core/player/mute"
 			],
 			"compiler": {}
 		}
