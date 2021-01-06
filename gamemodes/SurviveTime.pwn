@@ -56,6 +56,7 @@ const
 #include <ban>
 #include <accounts>
 #include <warn>
+#include <mute>
 #include <admin>
 
 

@@ -14,12 +14,6 @@ check_player_account(const playerid)
         cache_get_value_name_int(0, "account_id", account_id[playerid]);
         cache_get_value_name(0, "account_password", account_password[playerid]);
 
-        for (new i = 0; i < 4; ++i)
-            print(" ");
-
-        printf("%d--------", account_id[playerid]);
-        printf("%s--------", account_password[playerid]);
-
         // Loading character
         task_await(
             MySQL_QueryS(
@@ -33,7 +27,11 @@ check_player_account(const playerid)
             cache_get_value_name_int(0, "char_score", char_score[playerid]);
             cache_get_value_name_int(0, "char_money", char_money[playerid]);
             cache_get_value_name_int(0, "char_admin", char_admin[playerid]);
+            cache_get_value_name_int(0, "char_admincode", char_admin_code[playerid]);
             cache_get_value_name_int(0, "char_skin", char_skin[playerid]);
+            cache_get_value_name_int(0, "char_warn", char_warn_num[playerid]);
+            cache_get_value_name_int(0, "char_muted", char_muted[playerid]);
+            cache_get_value_name_int(0, "char_mutedmins", char_muted_mins[playerid]);
         }
 
         do_auth_login(playerid);
@@ -126,12 +124,12 @@ do_auth_login(const playerid)
         }
 
         else {
-            ++gPlayerLoginAttempts[playerid];
-            va_SendClientMessage(playerid, X11_ORANGE, "* Wrong password, attempts: %d/3.", gPlayerLoginAttempts[playerid]);
+            ++player_login_attempts[playerid];
+            va_SendClientMessage(playerid, X11_ORANGE, "* Wrong password, attempts: %d/3.", player_login_attempts[playerid]);
 
             do_auth_login(playerid);
 
-            if (gPlayerLoginAttempts[playerid] == 3)
+            if (player_login_attempts[playerid] == 3)
                 return Kick(playerid);
         }
     } else Kick(playerid);

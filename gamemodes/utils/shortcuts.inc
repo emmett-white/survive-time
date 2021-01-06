@@ -5,3 +5,16 @@
 
 #define fmt_err(%0,%1,%2) va_SendClientMessage(%0, X11_ORANGE, "* Error: "WHITE""%1,%2)
 #define fmt_info(%0,%1,%2) va_SendClientMessage(%0, X11_ORANGE, "* Info: "WHITE""%1,%2)
+
+// * Configs *
+#if defined MAX_WARNS
+    #undef MAX_WARNS
+#else
+    /*
+      * <summary>There are actually 5 warns, but when player gets 5 warns</summary>
+      * <summary>he will be automatically banned.</summary>
+    */
+    const MAX_WARNS = (4);
+#endif
+
+const MAX_MUTE_MINUTES = (9999);

@@ -4,7 +4,7 @@
 hook OnPlayerConnect(playerid)
 {
     // Reset variables
-    gPlayerLoginAttempts[playerid] =
+    player_login_attempts[playerid] =
     char_admin[playerid] =
     char_money[playerid] =
     char_skin[playerid] =

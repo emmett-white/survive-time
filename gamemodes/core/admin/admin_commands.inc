@@ -88,9 +88,9 @@ ACMD:[2]warn(playerid, const params[])
     if (sscanf(params, "rs[64]", targetid, reason))
         return usage(playerid, "/warn [targetid] [reason]");
 
-    ++player_warn_num[targetid];
+    ++char_warn_num[targetid];
 
-    if (player_warn_num[targetid] == (MAX_WARNS + 1)) {
+    if (char_warn_num[targetid] == (MAX_WARNS + 1)) {
         va_SendClientMessageToAll(
             X11_RED, "* Ban: "WHITE"Player %s has been banned (5 warns).", ReturnPlayerName(targetid)
         );
@@ -124,11 +124,11 @@ ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
     char_money[targetid] += amt;
     GivePlayerMoney(targetid, amt);
 
-    new String: str_query_money_add = str_format(
+    new String: str_query_money_set = str_format(
         "UPDATE characters SET char_money = '%d' WHERE char_id = '%d'", amt, char_id[targetid]
     );
 
-    mysql_tquery_s(MySQL_GetHandle(), str_query_money_add);
+    mysql_tquery_s(MySQL_GetHandle(), str_query_money_set);
 
     fmt_info(playerid, "You gave $%d to %s.", amt, ReturnPlayerName(targetid));
     fmt_info(targetid, "Admin %s gave you $%d.", ReturnPlayerName(playerid), amt);
@@ -151,11 +151,11 @@ ACMD:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
     char_score[targetid] = level;
     SetPlayerScore(targetid, level);
 
-    new String: str_query_score_add = str_format(
+    new String: str_query_score_set = str_format(
         "UPDATE characters SET char_score = '%d' WHERE char_id = '%d'", level, char_id[targetid]
     );
 
-    mysql_tquery_s(MySQL_GetHandle(), str_query_score_add);
+    mysql_tquery_s(MySQL_GetHandle(), str_query_score_set);
 
     fmt_info(playerid, "You set %s a score to %d.", ReturnPlayerName(targetid), level);
     fmt_info(targetid, "Admin %s set your score to %d.", ReturnPlayerName(playerid), level);

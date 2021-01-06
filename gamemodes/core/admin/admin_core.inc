@@ -23,11 +23,11 @@ set_admin_level(const playerid, const adminid, level = 0, code)
 
 
     char_admin[playerid] = level;
-    char_adminCode[playerid] = code;
+    char_admin_code[playerid] = code;
 
     new String: str_query_update_admin = str_format(
         "UPDATE characters SET char_admin = '%d', char_admincode = '%d' WHERE char_name = '%e'",
-        char_admin[playerid], char_adminCode[playerid], ReturnPlayerName(playerid)
+        char_admin[playerid], char_admin_code[playerid], ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL_GetHandle(), str_query_update_admin);
@@ -46,7 +46,7 @@ set_admin_level(const playerid, const adminid, level = 0, code)
     SetPlayerSkin(playerid, char_skin[playerid]);
 
     va_GameTextForPlayer(playerid, "~w~You're now an administrator level ~y~%d.", 3000, 3, char_admin[playerid]);
-    va_SendClientMessage(playerid, X11_ORANGE, "*Info: "WHITE"Your admin code is: %d", char_adminCode[playerid]);
+    va_SendClientMessage(playerid, X11_ORANGE, "*Info: "WHITE"Your admin code is: %d", char_admin_code[playerid]);
 
     return 1;
 }
