@@ -55,9 +55,9 @@ const
 
 #include <ban>
 #include <accounts>
+#include <warn>
 #include <admin>
 
-#include <warn>
 
 main()
 {

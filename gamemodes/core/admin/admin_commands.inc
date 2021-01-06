@@ -78,3 +78,60 @@ ACMD:[1]cc(playerid, const params[])
 
     return 1;
 }
+
+ACMD:[2]warn(playerid, const params[])
+{
+    static
+        targetid,
+        reason[64];
+
+    if (sscanf(params, "rs[64]", targetid, reason))
+        return usage(playerid, "/warn [targetid] [reason]");
+
+    ++player_warn_num[targetid];
+
+    if (player_warn_num[targetid] == (MAX_WARNS + 1)) {
+        va_SendClientMessageToAll(
+            X11_RED, "* Ban: "WHITE"Player %s has been banned (5 warns).", ReturnPlayerName(targetid)
+        );
+    
+        wait_ms(1000);
+        BanEx(targetid, "Max warns (5).");
+
+        return 1;
+    }
+
+    va_SendClientMessageToAll(
+        X11_RED, "* Warn: "WHITE"Player %s has been warned. Reason: %s",
+        ReturnPlayerName(targetid), reason
+    );
+
+    return 1;
+}
+
+ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
+{
+    static
+        targetid,
+        amt;
+
+    if (sscanf(params, "ri", targetid, amt))
+        return usage(playerid, "/givemoney [targetid] [amount]");
+
+    if (!(1 <= amt <= 1000000))
+        return err(playerid, "You can't give less than $1 and more than $1.000.000!");
+
+    char_money[targetid] += amt;
+    GivePlayerMoney(targetid, amt);
+
+    new String: str_query_money_add = str_format(
+        "UPDATE characters SET char_money = '%d' WHERE char_id = '%d'", amt, char_id[targetid]
+    );
+
+    mysql_tquery_s(MySQL_GetHandle(), str_query_money_add);
+
+    fmt_info(playerid, "You gave $%d to %s.", amt, ReturnPlayerName(targetid));
+    fmt_info(targetid, "Admin %s gave you $%d.", ReturnPlayerName(playerid), amt);
+
+    return 1;
+}

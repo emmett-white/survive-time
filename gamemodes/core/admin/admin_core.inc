@@ -1,3 +1,6 @@
+// * Variable *
+const MAX_ADMIN_LEVEL = (4);
+
 // * Functions *
 
 get_admin_level(const playerid)
