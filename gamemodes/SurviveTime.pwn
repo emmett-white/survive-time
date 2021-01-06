@@ -65,7 +65,7 @@ main()
     print("Gamemode successfully loaded.");
 
 	printf("JIT is %spresent", (IsJITPresent() ? ("not ") : ("")));
-    OnJITCompile();
+    OnJITCompile(); 
 }
 
 forward OnJITCompile();
