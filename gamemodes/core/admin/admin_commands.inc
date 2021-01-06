@@ -135,3 +135,30 @@ ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
 
     return 1;
 }
+
+ACMD:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
+{
+    static
+        targetid,
+        level;
+
+    if (sscanf(params, "ri", targetid, level))
+        return usage(playerid, "/setlevel [targetid] [level]");
+
+    if (!(1 <= level <= 10000))
+        return err(playerid, "You can't set a level less than 1 and more than 10000!");
+
+    char_score[targetid] = level;
+    SetPlayerScore(targetid, level);
+
+    new String: str_query_money_add = str_format(
+        "UPDATE characters SET char_score = '%d' WHERE char_id = '%d'", level, char_id[targetid]
+    );
+
+    mysql_tquery_s(MySQL_GetHandle(), str_query_money_add);
+
+    fmt_info(playerid, "You set %s a score to %d.", ReturnPlayerName(targetid), level);
+    fmt_info(targetid, "Admin %s set your score to %d.", ReturnPlayerName(playerid), level);
+
+    return 1;
+}
