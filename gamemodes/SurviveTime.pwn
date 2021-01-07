@@ -1,4 +1,5 @@
 // * SA-MP stdlib *
+// #include <openmp>
 #include <a_samp>
 
 #undef MAX_PLAYERS
@@ -57,6 +58,7 @@ const
 #include <accounts>
 #include <warn>
 #include <mute>
+#include <chat>
 #include <admin>
 
 
