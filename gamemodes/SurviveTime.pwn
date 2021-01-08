@@ -8,10 +8,10 @@
 #undef MAX_VEHICLES
 
 const
-	MAX_PLAYERS = (10),
-	MAX_PLAYER_NAME = (25),
-	MAX_ACTORS = (20),
-	MAX_VEHICLES = (500);
+	MAX_PLAYERS = 10,
+	MAX_PLAYER_NAME = 25,
+	MAX_ACTORS = 20,
+	MAX_VEHICLES = 500;
 
 // * JIT *
 #include <jit>
