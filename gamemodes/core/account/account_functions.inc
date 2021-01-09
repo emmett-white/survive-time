@@ -24,14 +24,31 @@ check_player_account(const playerid)
         );
 
         if (cache_num_rows()) {
-            cache_get_value_name_int(0, "char_score", char_score[playerid]);
-            cache_get_value_name_int(0, "char_money", char_money[playerid]);
-            cache_get_value_name_int(0, "char_admin", char_admin[playerid]);
-            cache_get_value_name_int(0, "char_admincode", char_admin_code[playerid]);
-            cache_get_value_name_int(0, "char_skin", char_skin[playerid]);
-            cache_get_value_name_int(0, "char_warn", char_warn_num[playerid]);
-            cache_get_value_name_int(0, "char_muted", char_muted[playerid]);
-            cache_get_value_name_int(0, "char_mutedmins", char_muted_mins[playerid]);
+            static tmpint = 0;
+            
+            cache_get_value_name_int(0, "char_score", tmpint);
+            set_player_score(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_money", tmpint);
+            set_player_money(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_admin", tmpint);
+            set_player_admin(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_admincode", tmpint);
+            set_player_admin_code(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_skin", tmpint);
+            set_player_skin(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_warn", tmpint);
+            set_player_warns(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_muted", tmpint);
+            set_player_muted(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_mutedmins", tmpint);
+            set_player_muted_mins(playerid, tmpint);
         }
 
         do_auth_login(playerid);

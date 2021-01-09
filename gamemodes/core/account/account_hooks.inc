@@ -3,15 +3,7 @@
 // * Hooks *
 hook OnPlayerConnect(playerid)
 {
-    // Reset variables
-    player_login_attempts[playerid] =
-    char_admin[playerid] =
-    char_money[playerid] =
-    char_skin[playerid] =
-    char_score[playerid] = 0;
-    
 	check_player_banned(playerid);
-    // check_player_account(playerid);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }

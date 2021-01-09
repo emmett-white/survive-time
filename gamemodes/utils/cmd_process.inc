@@ -5,7 +5,7 @@
 #endif
 
 #define CMD:%1(%2) forward cmd_%1(%2); public cmd_%1(%2)
-#define ACMD:[%0]%1(%2,%3) CMD:%1(%2,%3) if (get_admin_level(%2) < %0) return 0; else
+#define ACMD:[%0]%1(%2,%3) CMD:%1(%2,%3) if (get_player_admin(%2) < %0) return 0; else
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
@@ -24,7 +24,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(funcidx(cmdfunction) == -1) {
 		new
-			iLvl = get_admin_level(playerid),
+			iLvl = get_player_admin(playerid),
 			iLoop = 5;
 
 		while(iLoop > 0) {

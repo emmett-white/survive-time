@@ -61,7 +61,6 @@ const
 #include <chat>
 #include <admin>
 
-
 main()
 {
     print("Gamemode successfully loaded.");
