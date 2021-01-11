@@ -1,3 +1,9 @@
+/**
+  * <param name="playerid">admin who will mute player</param>
+  * <param name="targetid">player who will be muted</param>
+  * <param name="reason">the reason why player will be muted</param>
+  * <param name="minutes">the time how long the player will be muted</param>
+*/
 mute_player(const playerid, const targetid, const string: reason[], minutes)
 {
     // if (targetid == playerid)
@@ -15,6 +21,21 @@ mute_player(const playerid, const targetid, const string: reason[], minutes)
     va_SendClientMessageToAll(
         X11_RED, "* Mute: "WHITE"Player %s has been muted. Reason: %s",
         ReturnPlayerName(targetid), reason
+    );
+
+    return 1;
+}
+
+unmute_player(const playerid, const targetid)
+{
+    if (!get_player_muted(targetid))
+        return err(playerid, "That player isn't muted!");
+
+    set_player_muted(targetid, 0);
+    set_player_muted_mins(targetid, 0);
+
+    va_SendClientMessageToAll(
+        X11_RED, "* Un-Mute: "WHITE"Player %s is no longer muted!", ReturnPlayerName(targetid)  
     );
 
     return 1;

@@ -76,3 +76,16 @@ ACMD:[1]mute(playerid, const params[])
     
     return 1;
 }
+
+ACMD:[1]unmute(playerid, const params[])
+{
+    if (isnull(params))
+        return usage(playerid, "/unmute [targetid");
+        
+    if (!IsPlayerConnected(strval(params)))
+        return 0;
+
+    unmute_player(playerid, strval(params));
+
+    return 1;
+}
