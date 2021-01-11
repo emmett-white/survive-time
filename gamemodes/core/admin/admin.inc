@@ -10,6 +10,18 @@ set_player_admin(const playerid, const int)
 
     char_admin[playerid] = int;
 
+    new String: str_query_update = str_format(
+        "UPDATE \
+            characters \
+        SET \
+            char_admin = '%d' \
+        WHERE \
+            char_name = '%e'",
+        get_player_admin(playerid), ReturnPlayerName(playerid)
+    );
+
+    mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
+
     return 1;
 }
 
@@ -19,6 +31,18 @@ set_player_admin_code(const playerid, const int)
         return 0;
 
     char_admin_code[playerid] = int;
+
+    new String: str_query_update = str_format(
+        "UPDATE \
+            characters \
+        SET \
+            char_admincode = '%d' \
+        WHERE \
+            char_name = '%e'",
+        get_player_admin_code(playerid), ReturnPlayerName(playerid)
+    );
+
+    mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
 
     return 1;
 }
@@ -35,4 +59,7 @@ get_player_admin_code(const playerid)
 }
 
 #include <admin_core>
-#include <admin_commands>
+#include <admin_level_1>
+#include <admin_level_2>
+#include <admin_level_3>
+#include <admin_level_4>

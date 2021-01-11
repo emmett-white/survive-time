@@ -39,7 +39,7 @@ check_player_banned(const playerid)
     return 1;
 }
 
-/*
+/**
   * <param name="playerid">Player who will be banned</param>
   * <param name="adminid">Admin who will ban player</param>
   * <param name="reason">The reason why the player is banned</param>
@@ -74,7 +74,7 @@ ban_player(const playerid, const adminid, const string: reason[])
     return 1;
 }
 
-/*
+/**
   * <param name="playerid">Admin who will unban player</param>
   * <param name="name">Player who will be unbanned</param>
 */

@@ -127,16 +127,11 @@ do_auth_login(const playerid)
                 ReturnPlayerName(playerid)
             );
 
-            // Assign variables to player
-            char_score[playerid] = 1;
-            char_skin[playerid] = 26;
-            char_money[playerid] = 10000;
-
-            SetPlayerScore(playerid, char_score[playerid]);
-            GivePlayerMoney(playerid, char_money[playerid]);
+            SetPlayerScore(playerid, get_player_score(playerid));
+            GivePlayerMoney(playerid, get_player_money(playerid));
 
             // Change coordinates of spawn
-            SetSpawnInfo(playerid, 0, char_skin[playerid], 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+            SetSpawnInfo(playerid, 0, get_player_skin(playerid), 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
             SpawnPlayer(playerid);
         }
 

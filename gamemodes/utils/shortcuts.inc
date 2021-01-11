@@ -10,7 +10,7 @@
 #if defined MAX_WARNS
     #undef MAX_WARNS
 #else
-    /*
+    /**
       * <summary>There are actually 5 warns, but when player gets 5 warns</summary>
       * <summary>he will be automatically banned.</summary>
     */
@@ -18,3 +18,4 @@
 #endif
 
 const MAX_MUTE_MINUTES = (9999);
+#define MAX_REASON_TEXT  64

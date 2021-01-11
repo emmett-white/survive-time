@@ -1,7 +1,7 @@
 // * Variable *
 const MAX_ADMIN_LEVEL = (4);
 
-/*
+/**
   * <param name="playerid">The player to whom the admin will be assigned/removed</param>
   * <param name="adminid">The admin who assigns/removes admin to playerid</param>
   * <param name="level">the level of playerid's admin</param>
@@ -17,13 +17,6 @@ set_admin_level(const playerid, const adminid, level = 0, code)
 
     set_player_admin(playerid, level);
     set_player_admin_code(playerid, code);
-
-    new String: str_query_update_admin = str_format(
-        "UPDATE characters SET char_admin = '%d', char_admincode = '%d' WHERE char_name = '%e'",
-        get_player_admin(playerid), get_player_admin_code(playerid), ReturnPlayerName(playerid)
-    );
-
-    mysql_tquery_s(MySQL_GetHandle(), str_query_update_admin);
 
     if (level == 0) {
         set_player_skin(playerid, 26);
