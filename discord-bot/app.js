@@ -1,5 +1,3 @@
-'use strict'
-
 // Variables
 const
 	{ Client, MessageEmbed } = 		require('discord.js'),
