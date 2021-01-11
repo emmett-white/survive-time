@@ -63,7 +63,7 @@ const
 
 main()
 {
-    print("Gamemode successfully loaded.");
+    print("Gamemode successfully initialised.");
 
 	printf("JIT is %spresent", (IsJITPresent() ? ("not ") : ("")));
     OnJITCompile(); 
