@@ -37,7 +37,7 @@ const
 
 #include <YSI_Coding\y_timers>
 #include <YSI_Server\y_colours>
-#include <YSI_Coding\y_inline>
+#include <YSI_Data\y_bit>
 
 #include <sscanf2>
 

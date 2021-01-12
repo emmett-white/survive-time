@@ -72,7 +72,7 @@ check_player_account(const playerid)
 
     if (dialog_register[E_DIALOG_RESPONSE_Response]) {
         if (!(6 <= strlen(dialog_register[E_DIALOG_RESPONSE_InputText]) <= 24))
-            return SendClientMessage(playerid, X11_ORANGE, !"* Error: Password is too short or too long.");
+            return SendClientMessage(playerid, X11_ORANGE, "* Error: Password is too short or too long.");
 
 
         strcopy(account_password[playerid], dialog_register[E_DIALOG_RESPONSE_InputText]);
@@ -123,7 +123,7 @@ do_auth_login(const playerid)
         if (!strcmp(dialog_login[E_DIALOG_RESPONSE_InputText], account_password[playerid], false)) {
             va_SendClientMessage(
                 playerid, X11_ORANGE,
-                !"Info: "WHITE"%s you've successfully logged in.",
+                "Info: "WHITE"%s you've successfully logged in.",
                 ReturnPlayerName(playerid)
             );
 
@@ -137,7 +137,7 @@ do_auth_login(const playerid)
 
         else {
             ++player_login_attempts[playerid];
-            va_SendClientMessage(playerid, X11_ORANGE, !"* Wrong password, attempts: %d/3.", player_login_attempts[playerid]);
+            va_SendClientMessage(playerid, X11_ORANGE, "* Wrong password, attempts: %d/3.", player_login_attempts[playerid]);
 
             do_auth_login(playerid);
 

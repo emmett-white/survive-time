@@ -1,3 +1,6 @@
+static
+    BitArray: VEHICLE_SPAWNED<MAX_PLAYERS>;
+
 ACMD:[1]ban(playerid, const params[])
 {
     static
@@ -81,15 +84,45 @@ ACMD:[1]unmute(playerid, const params[])
 {
     if (isnull(params))
         return usage(playerid, "/unmute [targetid]");
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 324dcfbe66c5fa04877de497f5601e94d4105679
     if (!IsPlayerConnected(strval(params)))
         return 0;
 
     unmute_player(playerid, strval(params));
+
+    return 1;
+}
+
+ACMD:[1]veh(playerid, const params[])
+{
+    if (isnull(params))
+        return usage(playerid, "/veh [vehicle id (400-611)");
+
+    if (!(400 <= strval(params) <= 611))
+        return err(playerid, "Invalid vehicle ID!");
+
+    static
+        x,
+        y,
+        z,
+        a,
+
+        vehicleid;
+
+    if (!Bit_Get(VEHICLE_SPAWNED, playerid)) {
+        GetPlayerPos(playerid, Float: x, Float: y, Float: z);
+        GetPlayerFacingAngle(playerid, Float: a);
+
+        vehicleid = CreateVehicle(strval(params), Float: x, Float: y, Float: z, Float: a, 0, 0, 0);   
+        PutPlayerInVehicle(playerid, vehicleid, 0);
+    
+        Bit_Set(VEHICLE_SPAWNED, playerid, bool: true);
+
+        return 1;
+    }
+
+    Bit_Set(VEHICLE_SPAWNED, playerid, bool: false);
+    DestroyVehicle(vehicleid);
 
     return 1;
 }
