@@ -80,8 +80,8 @@ ACMD:[1]mute(playerid, const params[])
 ACMD:[1]unmute(playerid, const params[])
 {
     if (isnull(params))
-        return usage(playerid, "/unmute [targetid");
-        
+        return usage(playerid, "/unmute [targetid]");
+
     if (!IsPlayerConnected(strval(params)))
         return 0;
 

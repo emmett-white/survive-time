@@ -9,11 +9,10 @@ const MAX_ADMIN_LEVEL = (4);
 set_admin_level(const playerid, const adminid, level = 0, code)
 {
     if (!(0 <= level < 5))
-        return SendClientMessage(adminid, X11_ORANGE, "* Error: "WHITE"Admin level can't be less than 0 and greater than 4!");
+        return err(adminid, "* Error: "WHITE"Admin level can't be less than 0 and greater than 4!");
 
     if (level == get_player_admin(playerid))
-        return SendClientMessage(adminid, X11_ORANGE, "* Error: "WHITE"That player is already that admin level!");
-
+        return err(adminid, "* Error: "WHITE"That player is already that admin level!");
 
     set_player_admin(playerid, level);
     set_player_admin_code(playerid, code);
@@ -32,7 +31,7 @@ set_admin_level(const playerid, const adminid, level = 0, code)
     SetPlayerSkin(playerid, char_skin[playerid]);
 
     va_GameTextForPlayer(playerid, "~w~You're now an administrator level ~y~%d.", 3000, 3, get_player_admin(playerid));
-    va_SendClientMessage(playerid, X11_ORANGE, "*Info: "WHITE"Your admin code is: %d", get_player_admin_code(playerid));
+    va_SendClientMessage(playerid, X11_ORANGE, !"*Info: "WHITE"Your admin code is: %d", get_player_admin_code(playerid));
 
     return 1;
 }
