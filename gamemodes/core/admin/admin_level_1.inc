@@ -3,11 +3,7 @@ static
 
 ACMD:[1]ban(playerid, const params[])
 {
-    static
-        targetid,
-        reason[64];
-
-    if (sscanf(params, "rs[64]", targetid, reason))
+    extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else
         return usage(playerid, "/ban [targetid] [reason]");
 
     ban_player(targetid, playerid, reason);
@@ -17,24 +13,17 @@ ACMD:[1]ban(playerid, const params[])
 
 ACMD:[1]unban(playerid, const params[])
 {
-    static
-        name[MAX_PLAYER_NAME];
-
-    if (sscanf(params, "s[" #MAX_PLAYER_NAME "]", name))
+    if (isnull(params))
         return usage(playerid, "/unban [name]");
 
-    unban_player(playerid, name);
+    unban_player(playerid, params);
 
     return 1;
 }
 
 ACMD:[1]kick(playerid, const params[])
 {
-    static
-        targetid,
-        reason[64];
-
-    if (sscanf(params, "rs[64]", targetid, reason))
+    extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else
         return usage(playerid, "/kick [targetid] [reason]");
 
     if (targetid == playerid)
@@ -67,12 +56,7 @@ ACMD:[1]cc(playerid, const params[])
 
 ACMD:[1]mute(playerid, const params[])
 {
-    static
-        targetid,
-        minutes,
-        reason[MAX_REASON_TEXT];
-
-    if (sscanf(params, "rs["#MAX_REASON_TEXT"]i", targetid, reason, minutes))
+    extract params -> new targetid, string: reason[MAX_REASON_TEXT], minutes; else
         return usage(playerid, "/mute [targetid] [reason] [minutes]");
 
     mute_player(playerid, targetid, reason, minutes);
@@ -102,10 +86,7 @@ ACMD:[1]veh(playerid, const params[])
         return err(playerid, "Invalid vehicle ID!");
 
     static
-        x
-        y,
-        z,
-        a,
+        x, y, z, a,
         vehicleid;
 
     if (!Bit_Get(VEHICLE_SPAWNED, playerid)) {
@@ -122,6 +103,30 @@ ACMD:[1]veh(playerid, const params[])
 
     Bit_Set(VEHICLE_SPAWNED, playerid, bool: false);
     DestroyVehicle(vehicleid);
+
+    return 1;
+}
+
+ACMD:[1]pm(playerid, const params[])
+{
+    extract params -> new targetid, string: text[MAX_TEXT_MESSAGE]; else
+        return usage(playerid, "/pm [targetid] [text]");
+
+    va_SendClientMessage(playerid, X11_RED, "* PM: "WHITE"%s: %s", ReturnPlayerName(targetid), text);
+    va_SendClientMessage(targetid, X11_RED, "* PM: "WHITE"%s: %s", ReturnPlayerName(playerid), text);
+
+    return 1;
+}
+
+ACMD:[1]a(playerid, const params[])
+{
+    if (isnull(params))
+        return usage(playerid, "/a [text]");
+
+    foreach (new i: Player) {
+        if (get_player_admin(i))
+            va_SendClientMessage(i, X11_RED, "* Admin-Chat: "WHITE"(%d)%s: %s", i, ReturnPlayerName(i), params);
+    }
 
     return 1;
 }
