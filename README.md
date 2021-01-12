@@ -1,4 +1,6 @@
 # survive-time
+## Join our discord server
+[Survive-Time Discord Server](https://discord.gg/3vux22UJG5) <- click
 
 [![sampctl](https://img.shields.io/badge/sampctl-survive--time-2f2f2f.svg?style=for-the-badge)](https://github.com/emmett-white/survive-time)
 
@@ -34,31 +36,56 @@ Simply install to your project:
 sampctl package install emmett-white/survive-time
 ```
 
-Include in your code and begin using the library:
+## Contributing & Style Guide
+```c
+// Constants and macros in uppercase, with underscores separating words.
+// eg.
+#define MAX_REASON_TEXT 64
 
-```pawn
-#include <survive-time>
+const MAX_PLAYERS = 10;
+
+// Variables
+// Globals `static` as much as possible to prevent complex inter-module dependencies.
+// eg.
+static var1; // invalid
+static var1,
+    var2; // invalid
+
+static
+    var1,
+    var2; // valid
+
+// Brace style
+// You can use K&R style for everything but as you can se we use K&R style only inside functions
+// eg.
+func_name(const playerid, ...)
+{ // Allman
+    if (...)
+        return ...;
+
+    if (...) { // K&R
+        // code
+        
+        return ...;
+    }
+    
+    return 1;
+}
+
+// Function names
+// Functions and callbacks in lowercase
+// eg.
+get_player_level(const playerid)
+{
+    return char_score[playerid];
+}
+
+forward init_player_account(const playerid);
+public init_player_account(const playerid)
+{
+    account_id[playerid] = cache_insert_id();
+    return 1;
+}
 ```
 
-## Usage
-
-<!--
-Write your code documentation or examples here. If your library is documented in
-the source code, direct users there. If not, list your API and describe it well
-in this section. If your library is passive and has no API, simply omit this
-section.
--->
-
-## Testing
-
-<!--
-Depending on whether your package is tested via in-game "demo tests" or
-y_testing unit-tests, you should indicate to readers what to expect below here.
--->
-
-To test, simply run the package:
-
-```bash
-sampctl package run
-```
 # survive-time
