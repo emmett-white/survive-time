@@ -31,7 +31,7 @@ set_admin_level(const playerid, const adminid, level = 0, code)
     SetPlayerSkin(playerid, char_skin[playerid]);
 
     va_GameTextForPlayer(playerid, "~w~You're now an administrator level ~y~%d.", 3000, 3, get_player_admin(playerid));
-    va_SendClientMessage(playerid, X11_ORANGE, !"*Info: "WHITE"Your admin code is: %d", get_player_admin_code(playerid));
+    va_SendClientMessage(playerid, X11_ORANGE, "*Info: "WHITE"Your admin code is: %d", get_player_admin_code(playerid));
 
     return 1;
 }

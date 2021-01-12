@@ -80,7 +80,7 @@ ACMD:[1]unmute(playerid, const params[])
 ACMD:[1]veh(playerid, const params[])
 {
     if (isnull(params))
-        return usage(playerid, "/veh [vehicle id (400-611)");
+        return usage(playerid, "/veh [vehicle id (400-611)]");
 
     if (!(400 <= strval(params) <= 611))
         return err(playerid, "Invalid vehicle ID!");
