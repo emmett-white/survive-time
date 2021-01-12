@@ -102,11 +102,7 @@ ACMD:[1]veh(playerid, const params[])
         return err(playerid, "Invalid vehicle ID!");
 
     static
-        x,
-        y,
-        z,
-        a,
-
+        x, y, z, a,
         vehicleid;
 
     if (!Bit_Get(VEHICLE_SPAWNED, playerid)) {
