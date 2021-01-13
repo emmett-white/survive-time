@@ -53,6 +53,7 @@ const
 #include <db_init>
 #include <cmd_process>
 #include <shortcuts>
+#include <vehicles>
 
 #include <ban>
 #include <accounts>
@@ -66,7 +67,24 @@ main()
     print("Gamemode successfully initialised.");
 
 	printf("JIT is %spresent", (IsJITPresent() ? ("not ") : ("")));
-    OnJITCompile(); 
+    OnJITCompile();
+}
+
+public OnGameModeInit()
+{
+	SetWeather(0);
+	EnableStuntBonusForAll(0);
+	DisableInteriorEnterExits();
+	UsePlayerPedAnims();
+
+	// Loading vehicles
+	LoadStaticVehiclesFromFile("vehicles/ls_airport.txt");
+	LoadStaticVehiclesFromFile("vehicles/ls_gen_inner.txt");
+	LoadStaticVehiclesFromFile("vehicles/ls_gen_outer.txt");
+	LoadStaticVehiclesFromFile("vehicles/ls_law.txt");
+	LoadStaticVehiclesFromFile("vehicles/red_country.txt");
+
+	return 1;
 }
 
 forward OnJITCompile();

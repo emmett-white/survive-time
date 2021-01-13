@@ -130,3 +130,13 @@ ACMD:[1]a(playerid, const params[])
 
     return 1;
 }
+
+ACMD:[1]kill(playerid, const params[])
+{
+    extract params -> new targetid; else
+        return usage(playerid, "/kill [targetid] [reason]");
+
+    SetPlayerHealth(targetid, Float: 0.0);
+
+    return 1;
+}
