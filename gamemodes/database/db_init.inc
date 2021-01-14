@@ -4,12 +4,10 @@
 static
     MySQL: db_handle;
 
-
 // * Hooks *
 hook OnGameModeInit()
 {
     db_create_conn();
-
     pp_use_funcidx(true);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
@@ -32,15 +30,17 @@ static db_create_conn()
         env_database[15];
 
 
-    if (Env_Has("MYSQL_HOSTNAME"))
+    if (Env_Has("MYSQL_HOSTNAME")) {
         Env_Get("MYSQL_HOSTNAME", env_hostname);
+    }
 
-    if (Env_Has("MYSQL_USERNAME"))
+    if (Env_Has("MYSQL_USERNAME")) {
         Env_Get("MYSQL_USERNAME", env_username);
+    }
 
-    if (Env_Has("MYSQL_DATABASE"))
+    if (Env_Has("MYSQL_DATABASE")) {
         Env_Get("MYSQL_DATABASE", env_database);
-
+    }
 
     new MySQLOpt: options = mysql_init_options();
     mysql_set_option(options, AUTO_RECONNECT, true);
@@ -48,7 +48,6 @@ static db_create_conn()
     mysql_set_option(options, POOL_SIZE, 2);
 
     db_handle = mysql_connect(env_hostname, env_username, "", env_database, options);
-
 
     if (mysql_errno(db_handle) != 0) {
         print("[MySQL]: Can't connect to database!");
@@ -67,7 +66,6 @@ public OnQueryError(errorid, const error[], const callback[], const query[], MyS
 {
     return 1;
 }
-
 
 stock MySQL: MySQL_GetHandle()
 {

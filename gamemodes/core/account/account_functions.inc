@@ -8,8 +8,7 @@ check_player_account(const playerid)
         )
     );
 
-    if (cache_num_rows())
-    {
+    if (cache_num_rows()) {
         // Loading account
         cache_get_value_name_int(0, "account_id", account_id[playerid]);
         cache_get_value_name(0, "account_password", account_password[playerid]);
@@ -71,9 +70,9 @@ check_player_account(const playerid)
     );
 
     if (dialog_register[E_DIALOG_RESPONSE_Response]) {
-        if (!(6 <= strlen(dialog_register[E_DIALOG_RESPONSE_InputText]) <= 24))
-            return SendClientMessage(playerid, X11_ORANGE, "* Error: Password is too short or too long.");
-
+        if (!(6 <= strlen(dialog_register[E_DIALOG_RESPONSE_InputText]) <= 24)) {
+            return err(playerid, "Password is too short or too long.");
+        }
 
         strcopy(account_password[playerid], dialog_register[E_DIALOG_RESPONSE_InputText]);
 
@@ -121,11 +120,7 @@ do_auth_login(const playerid)
 
     if (dialog_login[E_DIALOG_RESPONSE_Response]) {
         if (!strcmp(dialog_login[E_DIALOG_RESPONSE_InputText], account_password[playerid], false)) {
-            va_SendClientMessage(
-                playerid, X11_ORANGE,
-                "Info: "WHITE"%s you've successfully logged in.",
-                ReturnPlayerName(playerid)
-            );
+            fmt_info(playerid, "Info: "WHITE"%s you've successfully logged in.", ReturnPlayerName(playerid));
 
             SetPlayerScore(playerid, get_player_score(playerid));
             GivePlayerMoney(playerid, get_player_money(playerid));
@@ -137,14 +132,19 @@ do_auth_login(const playerid)
 
         else {
             ++player_login_attempts[playerid];
-            va_SendClientMessage(playerid, X11_ORANGE, "* Wrong password, attempts: %d/3.", player_login_attempts[playerid]);
+            fmt_err(playerid, "Wrong password, attempts: %d/3.", player_login_attempts[playerid]);
 
             do_auth_login(playerid);
 
-            if (player_login_attempts[playerid] == 3)
+            if (player_login_attempts[playerid] == 3) {
                 return Kick(playerid);
+            }
         }
-    } else Kick(playerid);
+    }
+    
+    else {
+        Kick(playerid);
+    }
 
     return 1;
 }

@@ -5,8 +5,9 @@ static
 // * Set functions *
 set_player_muted(const playerid, const int)
 {
-    if (!IsPlayerConnected(playerid))
+    if (!IsPlayerConnected(playerid)) {
         return 0;
+    }
 
     char_muted[playerid] = int;
 
@@ -27,8 +28,9 @@ set_player_muted(const playerid, const int)
 
 set_player_muted_mins(const playerid, const int)
 {
-    if (!IsPlayerConnected(playerid))
+    if (!IsPlayerConnected(playerid)) {
         return 0;
+    }
 
     char_muted_mins[playerid] = int;
 

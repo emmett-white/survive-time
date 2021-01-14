@@ -8,11 +8,13 @@ const MAX_ADMIN_LEVEL = (4);
 */
 set_admin_level(const playerid, const adminid, level = 0, code)
 {
-    if (!(0 <= level < 5))
+    if (!(0 <= level < 5)) {
         return err(adminid, "* Error: "WHITE"Admin level can't be less than 0 and greater than 4!");
+    }
 
-    if (level == get_player_admin(playerid))
+    if (level == get_player_admin(playerid)) {
         return err(adminid, "* Error: "WHITE"That player is already that admin level!");
+    }
 
     set_player_admin(playerid, level);
     set_player_admin_code(playerid, code);

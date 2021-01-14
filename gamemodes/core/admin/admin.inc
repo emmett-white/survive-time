@@ -5,8 +5,9 @@ static
 // * Set functions *
 set_player_admin(const playerid, const int)
 {
-    if (!IsPlayerConnected(playerid))
+    if (!IsPlayerConnected(playerid)) {
         return 0;
+    }
 
     char_admin[playerid] = int;
 
@@ -27,8 +28,9 @@ set_player_admin(const playerid, const int)
 
 set_player_admin_code(const playerid, const int)
 {
-    if (!IsPlayerConnected(playerid))
+    if (!IsPlayerConnected(playerid)) {
         return 0;
+    }
 
     char_admin_code[playerid] = int;
 

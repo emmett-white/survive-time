@@ -17,8 +17,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	sscanf(cmdtext, "s[30]s[127]", cmd, params);
 
-	for (new i, j = strlen(cmd); i < j; i++)
+	for (new i, j = strlen(cmd); i < j; i++) {
 		cmd[i] = tolower(cmd[i]);
+	}
 
 	format(cmdfunction, 64, "cmd_%s", cmd[1]);
 
@@ -30,22 +31,30 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		while(iLoop > 0) {
 			format(cmdfunction, 64, "acmd_%s_%d", cmd[1], iLoop);
 
-			if(funcidx(cmdfunction) != -1)
+			if(funcidx(cmdfunction) != -1) {
 				break;
+			}
 
 			iLoop--;
 		}
 
-		if(iLoop == 0)
+		if(iLoop == 0) {
 			result = 0;
+		}
 
-		if(iLvl < iLoop)
+		if(iLvl < iLoop) {
 			result = 5;
+		}
 	}
 
 	if(result == 1) {
-		if(isnull(params))result = CallLocalFunction(cmdfunction, "is", playerid, "\1");
-		else result = CallLocalFunction(cmdfunction, "is", playerid, params);
+		if(isnull(params)) {
+			result = CallLocalFunction(cmdfunction, "is", playerid, "\1");
+		}
+
+		else {
+			result = CallLocalFunction(cmdfunction, "is", playerid, params);
+		}
 	}
 	
 	return 1;

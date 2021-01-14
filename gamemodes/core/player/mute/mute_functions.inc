@@ -9,11 +9,13 @@ mute_player(const playerid, const targetid, const string: reason[], minutes)
     // if (targetid == playerid)
     //     return err(playerid, "You can't mute yourself!");
 
-    if (get_player_muted(targetid))
+    if (get_player_muted(targetid)) {
         return err(playerid, "That player is already muted!");
+    }
 
-    if (!(1 <= minutes <= MAX_MUTE_MINUTES))
+    if (!(1 <= minutes <= MAX_MUTE_MINUTES)) {
         return fmt_err(playerid, "Minutes can't be less than 0 and more than %d!", MAX_MUTE_MINUTES);
+    }
 
     set_player_muted(targetid, 1);
     set_player_muted_mins(targetid, minutes);
@@ -28,8 +30,9 @@ mute_player(const playerid, const targetid, const string: reason[], minutes)
 
 unmute_player(const playerid, const targetid)
 {
-    if (!get_player_muted(targetid))
+    if (!get_player_muted(targetid)) {
         return err(playerid, "That player isn't muted!");
+    }
 
     set_player_muted(targetid, 0);
     set_player_muted_mins(targetid, 0);

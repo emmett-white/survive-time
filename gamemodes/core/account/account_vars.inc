@@ -13,8 +13,9 @@ new
 // * Set functions *
 set_player_score(const playerid, const int)
 {
-    if (!IsPlayerConnected(playerid))
+    if (!IsPlayerConnected(playerid)) {
         return 0;
+    }
 
     char_score[playerid] = int;
 
@@ -35,8 +36,9 @@ set_player_score(const playerid, const int)
 
 set_player_money(const playerid, const int)
 {
-    if (!IsPlayerConnected(playerid))
+    if (!IsPlayerConnected(playerid)) {
         return 0;
+    }
 
     char_money[playerid] = int;
 
@@ -57,8 +59,9 @@ set_player_money(const playerid, const int)
 
 set_player_skin(const playerid, const int)
 {
-    if (!IsPlayerConnected(playerid))
+    if (!IsPlayerConnected(playerid)) {
         return 0;
+    }
 
     char_skin[playerid] = int;
 
