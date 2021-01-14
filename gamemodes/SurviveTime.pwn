@@ -49,6 +49,9 @@ const
 // * Dialogs *
 #include <async-dialogs>
 
+// * Vehicle framework *
+#include <vehicle_framework>
+
 // * Modules *
 #include <db_init>
 #include <cmd_process>

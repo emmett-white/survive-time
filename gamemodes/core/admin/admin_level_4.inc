@@ -1,7 +1,8 @@
 ACMD:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, const params[])
 {
-    extract params -> new targetid, level, code; else
+    extract params -> new targetid, level, code; else {
         return usage(playerid, "/setadmin [targetid] [level] [code]");
+    }
 
     set_admin_level(targetid, playerid, level, code);
 
@@ -10,11 +11,13 @@ ACMD:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, const param
 
 ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
 {
-    extract params -> new targetid, amt; else
+    extract params -> new targetid, amt; else {
         return usage(playerid, "/givemoney [targetid] [amount]");
+    }
 
-    if (!(1 <= amt <= 1000000))
+    if (!(1 <= amt <= 1000000)) {
         return err(playerid, "You can't give less than $1 and more than $1.000.000!");
+    }
 
     set_player_money(playerid, amt);
     GivePlayerMoney(targetid, amt);
@@ -27,11 +30,13 @@ ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
 
 ACMD:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
 {
-    extract params -> new targetid, level; else
+    extract params -> new targetid, level; else {
         return usage(playerid, "/setlevel [targetid] [level]");
+    }
 
-    if (!(1 <= level <= 10000))
+    if (!(1 <= level <= 10000)) {
         return err(playerid, "You can't set a level less than 1 and more than 10000!");
+    }
 
     SetPlayerScore(targetid, level);
     set_player_score(playerid, level);

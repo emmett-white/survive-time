@@ -1,7 +1,8 @@
 ACMD:[2]warn(playerid, const params[])
 {
-    extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else
+    extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else {
         return usage(playerid, "/warn [targetid] [reason]");
+    }
 
     ++char_warn_num[targetid];
 
@@ -26,11 +27,9 @@ ACMD:[2]warn(playerid, const params[])
 
 ACMD:[2]goto(playerid, const params[])
 {
-    if (isnull(params))
+    if (isnull(params)) {
         return usage(playerid, "/goto [targetid]");
-
-    if (strval(params) == playerid)
-        return 0;
+    }
 
     static
         x,
@@ -40,16 +39,17 @@ ACMD:[2]goto(playerid, const params[])
     GetPlayerPos(strval(params), Float: x, Float: y, Float: z);
     SetPlayerPos(playerid, Float: x, Float: y, Float: z);
 
+    fmt_info(strval(params), "Admin %s has teleported to you.", ReturnPlayerName(playerid));
+    fmt_info(strval(params), "You've teleported to the player %s.", ReturnPlayerName(strval(params)));
+
     return 1;
 }
 
 ACMD:[2]get(playerid, const params[])
 {
-    if (isnull(params))
+    if (isnull(params)) {
         return usage(playerid, "/get [targetid]");
-
-    if (strval(params) == playerid)
-        return 0;
+    }
 
     static
         x,
@@ -58,6 +58,9 @@ ACMD:[2]get(playerid, const params[])
 
     GetPlayerPos(playerid, Float: x, Float: y, Float: z);
     SetPlayerPos(strval(params), Float: x, Float: y, Float: z);
+
+    fmt_info(strval(params), "Admin %s teleported you to him.", ReturnPlayerName(playerid));
+    fmt_info(strval(params), "You've teleported player %s to you.", ReturnPlayerName(strval(params)));
 
     return 1;
 }
