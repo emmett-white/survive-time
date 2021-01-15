@@ -52,6 +52,9 @@ const
 // * Vehicle framework *
 #include <vehicle_framework>
 
+// * pawn-chrono *
+#include <chrono>
+
 // * Modules *
 #include <db_init>
 #include <cmd_process>
@@ -63,14 +66,22 @@ const
 #include <warn>
 #include <mute>
 #include <chat>
+#include <report>
 #include <admin>
+
+#include <vehicle_framework>
 
 main()
 {
-    print("Gamemode successfully initialised.");
-
 	printf("JIT is %spresent", (IsJITPresent() ? ("not ") : ("")));
     OnJITCompile();
+
+	new
+		Timestamp: ts = Timestamp: Now(),
+		timeformat[24];
+
+	TimeFormat(Timestamp: ts, ISO6801_TIME, timeformat, sizeof timeformat);
+	printf("Gamemode successfully loaded at %s", timeformat);
 }
 
 public OnGameModeInit()

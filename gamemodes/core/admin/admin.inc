@@ -2,6 +2,18 @@ static
     char_admin[MAX_PLAYERS],
     char_admin_code[MAX_PLAYERS];
 
+// * Functions *
+msg_admin(colour, const string: text[], va_args<>)
+{
+    foreach (new i: Player) {
+        if (get_player_admin(i)) {
+            return SendClientMessage(i, colour, va_return(text, va_start<2>));
+        }
+    }
+
+    return 1;
+}
+
 // * Set functions *
 set_player_admin(const playerid, const int)
 {
