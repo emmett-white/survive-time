@@ -17,7 +17,9 @@
 		"maddinat0r/sscanf",
 		"samp-incognito/samp-streamer-plugin",
 		"emmett-white/survive-time",
-		"openmultiplayer/stdlib"
+		"openmultiplayer/stdlib",
+		"Mergevos/samp-vehicle-framework",
+		"Southclaws/pawn-chrono"
 	],
 	"local": true,
 	"runtime": {
@@ -77,7 +79,9 @@
 				"gamemodes/core/admin",
 				"gamemodes/core/player",
 				"gamemodes/core/player/warn",
-				"gamemodes/core/player/mute"
+				"gamemodes/core/player/mute",
+				"gamemodes/core/player/chat",
+				"gamemodes/core/player/report"
 			],
 			"compiler": {}
 		}
