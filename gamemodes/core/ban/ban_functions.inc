@@ -1,7 +1,7 @@
 check_player_banned(const playerid)
 {
     task_await(
-        MySQL_QueryS(
+        Task: MySQL_QueryS(
             str_format(
                 "SELECT * FROM banned WHERE banned_player = '%e'", ReturnPlayerName(playerid)
             )

@@ -1,7 +1,7 @@
 check_player_account(const playerid)
 {
     task_await(
-        MySQL_QueryS(
+        Task: MySQL_QueryS(
             str_format(
                 "SELECT * FROM accounts WHERE account_name = '%e'", ReturnPlayerName(playerid)
             )
@@ -15,7 +15,7 @@ check_player_account(const playerid)
 
         // Loading character
         task_await(
-            MySQL_QueryS(
+            Task: MySQL_QueryS(
                 str_format(
                     "SELECT * FROM characters WHERE char_name = '%e'", ReturnPlayerName(playerid)
                 )

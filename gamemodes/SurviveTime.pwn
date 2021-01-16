@@ -67,6 +67,7 @@ const
 #include <mute>
 #include <chat>
 #include <report>
+#include <ui>
 #include <admin>
 
 #include <vehicle_framework>
@@ -78,10 +79,10 @@ main()
 
 	new
 		Timestamp: ts = Timestamp: Now(),
-		timeformat[24];
+		ts_format[24];
 
-	TimeFormat(Timestamp: ts, ISO6801_TIME, timeformat, sizeof timeformat);
-	printf("Gamemode successfully loaded at %s", timeformat);
+	TimeFormat(Timestamp: ts, ISO6801_TIME, ts_format, sizeof ts_format);
+	printf("Gamemode successfully loaded at %s", ts_format);
 }
 
 public OnGameModeInit()

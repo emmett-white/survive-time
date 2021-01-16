@@ -28,6 +28,9 @@ hook OnPlayerSpawn(playerid)
 	SetPlayerFacingAngle(playerid, Float: pos_a);
 	SetPlayerInterior(playerid, interior);
 	SetPlayerVirtualWorld(playerid, world);
+	SetPlayerSkin(playerid, get_player_skin(playerid));
+
+	ui_create_player_textdraws(playerid);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
