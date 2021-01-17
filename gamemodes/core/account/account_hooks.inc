@@ -31,6 +31,7 @@ hook OnPlayerSpawn(playerid)
 	SetPlayerSkin(playerid, get_player_skin(playerid));
 
 	ui_create_player_textdraws(playerid);
+	ui_create_player_help_msg(playerid);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }

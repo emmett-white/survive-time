@@ -21,3 +21,6 @@ const MAX_MUTE_MINUTES = (9999);
 
 #define MAX_REASON_TEXT  64
 #define MAX_TEXT_MESSAGE 128
+
+#define PRESSED(%0) \
+    (((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))

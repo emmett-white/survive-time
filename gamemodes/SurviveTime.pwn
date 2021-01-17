@@ -68,6 +68,8 @@ const
 #include <chat>
 #include <report>
 #include <ui>
+#include <help>
+#include <vehicle>
 #include <admin>
 
 #include <vehicle_framework>
