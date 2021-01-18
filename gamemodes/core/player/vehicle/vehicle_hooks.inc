@@ -51,7 +51,7 @@ hook OnPlayerEnterVehicle(playerid, vehicleid, bool:ispassenger)
 
 hook OnPlayerExitVehicle(playerid, vehicleid)
 {
-    // Vehicle_SetLockState(vehicleid, E_LOCK_STATE_OFF);
+    Vehicle_SetLockState(vehicleid, E_LOCK_STATE_OFF);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
