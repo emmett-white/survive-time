@@ -120,7 +120,7 @@ do_auth_login(const playerid)
 
     if (dialog_login[E_DIALOG_RESPONSE_Response]) {
         if (!strcmp(dialog_login[E_DIALOG_RESPONSE_InputText], account_password[playerid], false)) {
-            fmt_info(playerid, "Info: "WHITE"%s you've successfully logged in.", ReturnPlayerName(playerid));
+            fmt_info(playerid, "%s you've successfully logged in.", ReturnPlayerName(playerid));
 
             SetPlayerScore(playerid, get_player_score(playerid));
             GivePlayerMoney(playerid, get_player_money(playerid));

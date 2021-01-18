@@ -90,6 +90,7 @@ main()
 public OnGameModeInit()
 {
 	SetWeather(0);
+	SetWorldTime(0);
 	EnableStuntBonusForAll(0);
 	DisableInteriorEnterExits();
 	UsePlayerPedAnims();
