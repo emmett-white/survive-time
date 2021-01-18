@@ -56,14 +56,15 @@ static
     var2; // valid
 
 // Brace style
-// You can use K&R style for everything but as you can se we use K&R style only inside functions
+// Allman
 // eg.
 func_name(const playerid, ...)
-{ // Allman
-    if (...)
+{
+    if (...) {
         return ...;
+    }
 
-    if (...) { // K&R
+    if (...) {
         // code
         
         return ...;
