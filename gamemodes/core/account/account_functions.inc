@@ -98,6 +98,18 @@ check_player_account(const playerid)
 
         mysql_tquery_s(MySQL_GetHandle(), str_query_acc, "init_player_account", "d", playerid);
         mysql_tquery_s(MySQL_GetHandle(), str_query_char, "init_player_character", "d", playerid);
+
+        fmt_info(playerid, "%s welcome to the Survive Time server!", ReturnPlayerName(playerid));
+
+        set_player_score(playerid, 1);
+        set_player_money(playerid, 100);
+        set_player_skin(playerid, 26);
+
+        SetPlayerScore(playerid, get_player_score(playerid));
+        GivePlayerMoney(playerid, get_player_money(playerid));
+
+        defer spawn_player(playerid);
+        GameTextForPlayer(playerid, "~y~CREATING ACCOUNT...", 3000, 3);
     }
 
     return 1;
@@ -125,9 +137,8 @@ do_auth_login(const playerid)
             SetPlayerScore(playerid, get_player_score(playerid));
             GivePlayerMoney(playerid, get_player_money(playerid));
 
-            // Change coordinates of spawn
-            SetSpawnInfo(playerid, 0, get_player_skin(playerid), 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
-            SpawnPlayer(playerid);
+            defer spawn_player(playerid);
+            GameTextForPlayer(playerid, "~y~LOADING ACCOUNT...", 3000, 3);
         }
 
         else {

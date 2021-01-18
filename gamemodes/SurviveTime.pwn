@@ -62,6 +62,7 @@ const
 #include <vehicles>
 
 #include <ban>
+#include <spawn>
 #include <accounts>
 #include <warn>
 #include <mute>
