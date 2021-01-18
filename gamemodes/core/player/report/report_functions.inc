@@ -5,8 +5,9 @@
 */
 report_player(const targetid, const playerid, const string: reason[])
 {
-    if (targetid == playerid)
+    if (targetid == playerid) {
         return err(playerid, "You can't report yourself!");
+	}
 
     msg_admin(
         X11_RED, "[Player Report]: "WHITE"%s reported player %s for %s.",
