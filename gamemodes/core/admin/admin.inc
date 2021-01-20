@@ -23,7 +23,7 @@ set_player_admin(const playerid, const int)
 
     char_admin[playerid] = int;
 
-    new String: str_query_update = str_format(
+    new String: str_query_update = String: str_format(
         "UPDATE \
             characters \
         SET \
@@ -46,7 +46,7 @@ set_player_admin_code(const playerid, const int)
 
     char_admin_code[playerid] = int;
 
-    new String: str_query_update = str_format(
+    new String: str_query_update = String: str_format(
         "UPDATE \
             characters \
         SET \

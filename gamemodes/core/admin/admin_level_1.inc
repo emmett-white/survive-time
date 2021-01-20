@@ -153,3 +153,14 @@ ACMD:[1]kill(playerid, const params[])
 
     return 1;
 }
+
+ACMD:[1]gotodealer(playerid, const params[])
+{
+    if (isnull(params)) {
+        return usage(playerid, "/gotodealer [dealer id]");
+    }
+
+    goto_dealer(playerid, strval(params));
+
+    return 1;
+}

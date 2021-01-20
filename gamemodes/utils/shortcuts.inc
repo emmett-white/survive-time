@@ -24,3 +24,6 @@ const MAX_MUTE_MINUTES = (9999);
 
 #define PRESSED(%0) \
     (((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
+
+// PawnPlus natives
+native fmt_Create3DTextLabel(ConstAmxString: text, colour, Float:position_x, Float:position_y, Float:position_z, Float:drawDistance, virtualWorld, testlos = 0) = Create3DTextLabel;

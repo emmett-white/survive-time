@@ -2,7 +2,7 @@ check_player_banned(const playerid)
 {
     task_await(
         Task: MySQL_QueryS(
-            str_format(
+            String: str_format(
                 "SELECT * FROM banned WHERE banned_player = '%e'", ReturnPlayerName(playerid)
             )
         )
@@ -50,7 +50,7 @@ ban_player(const playerid, const adminid, const string: reason[])
         return err(adminid, "You can't ban yourself!");
     }
 
-    new String: str_query_ban_ins = str_format(
+    new String: str_query_ban_ins = String: str_format(
         "INSERT INTO \
             banned (banned_player, banned_admin, banned_reason) \
         VALUES \
@@ -82,7 +82,7 @@ unban_player(const playerid, const string: name[])
 {
     task_await(
         MySQL_QueryS(
-            str_format(
+            String: str_format(
                 "SELECT * FROM banned WHERE banned_player = '%e'", name
             )
         )  
@@ -92,7 +92,7 @@ unban_player(const playerid, const string: name[])
         return err(playerid, "That player isn't banned.");
     }
 
-    new String: str_query_ban_del = str_format(
+    new String: str_query_ban_del = String: str_format(
         "DELETE FROM banned WHERE banned_player = '%e'", name
     );
 

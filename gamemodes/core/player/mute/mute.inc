@@ -11,7 +11,7 @@ set_player_muted(const playerid, const int)
 
     char_muted[playerid] = int;
 
-    new String: str_query_update = str_format(
+    new String: str_query_update = String: String: str_format(
         "UPDATE \
             characters \
         SET \
@@ -34,7 +34,7 @@ set_player_muted_mins(const playerid, const int)
 
     char_muted_mins[playerid] = int;
 
-    new String: str_query_update = str_format(
+    new String: str_query_update = String: String: str_format(
         "UPDATE \
             characters \
         SET \

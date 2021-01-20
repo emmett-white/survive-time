@@ -46,3 +46,23 @@ ACMD:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
 
     return 1;
 }
+
+ACMD:[MAX_ADMIN_LEVEL]createdealer(playerid, const params[])
+{
+    extract params -> new skin, string: name[25]; else {
+        return usage(playerid, "/createdealer [skin] [name]");
+    }
+
+    static
+        x,
+        y,
+        z,
+        a;
+    
+    GetPlayerPos(playerid, Float: x, Float: y, Float: z);
+    GetPlayerFacingAngle(playerid, Float: a);
+
+    create_dealer(skin, name, Float: x, Float: y, Float: z, Float: a);
+
+    return 1;
+}

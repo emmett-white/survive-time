@@ -1,3 +1,8 @@
+/**
+  * TODO: Make dealer offers...
+  * ...
+*/
+
 // * SA-MP stdlib *
 // #include <openmp>
 #include <a_samp>
@@ -73,7 +78,7 @@ const
 #include <vehicle>
 #include <admin>
 
-#include <vehicle_framework>
+#include <dealer>
 
 main()
 {

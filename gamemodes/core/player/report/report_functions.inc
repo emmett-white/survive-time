@@ -23,7 +23,7 @@ report_bug(const playerid, const string: reason[])
 {
 	task_await(
 		Task: MySQL_QueryS(
-			str_format(
+			String: str_format(
 				"SELECT * FROM reports where report_reason = '%e'", reason
 			)
 		)
@@ -33,7 +33,7 @@ report_bug(const playerid, const string: reason[])
 		return err(playerid, "That report already exists!");
 	}
 
-	new String: str_query_report_update = str_format(
+	new String: str_query_report_update = String: str_format(
 		"INSERT INTO \
 			reports (report_player, report_reason) \
 		VALUES \

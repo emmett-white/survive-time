@@ -19,7 +19,7 @@ set_player_score(const playerid, const int)
 
     char_score[playerid] = int;
 
-    new String: str_query_update = str_format(
+    new String: str_query_update = String: str_format(
         "UPDATE \
             characters \
         SET \
@@ -42,7 +42,7 @@ set_player_money(const playerid, const int)
 
     char_money[playerid] = int;
 
-    new String: str_query_update = str_format(
+    new String: str_query_update = String: str_format(
         "UPDATE \
             characters \
         SET \
@@ -65,7 +65,7 @@ set_player_skin(const playerid, const int)
 
     char_skin[playerid] = int;
 
-    new String: str_query_update = str_format(
+    new String: str_query_update = String: str_format(
         "UPDATE \
             characters \
         SET \

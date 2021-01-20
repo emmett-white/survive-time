@@ -2,7 +2,7 @@ check_player_account(const playerid)
 {
     task_await(
         Task: MySQL_QueryS(
-            str_format(
+            String: str_format(
                 "SELECT * FROM accounts WHERE account_name = '%e'", ReturnPlayerName(playerid)
             )
         )
@@ -16,7 +16,7 @@ check_player_account(const playerid)
         // Loading character
         task_await(
             Task: MySQL_QueryS(
-                str_format(
+                String: str_format(
                     "SELECT * FROM characters WHERE char_name = '%e'", ReturnPlayerName(playerid)
                 )
             )
@@ -48,6 +48,9 @@ check_player_account(const playerid)
 
             cache_get_value_name_int(0, "char_mutedmins", tmpint);
             set_player_muted_mins(playerid, tmpint);
+
+            cache_get_value_name_int(0, "char_drugs", tmpint);
+            set_player_drugs(playerid, tmpint);
         }
 
         do_auth_login(playerid);
@@ -80,7 +83,7 @@ check_player_account(const playerid)
             String: str_query_acc,
             String: str_query_char;
 
-        str_query_acc = str_format(
+        str_query_acc = String: str_format(
             "INSERT INTO \
                 accounts (account_name, account_password) \
             VALUES \
@@ -88,7 +91,7 @@ check_player_account(const playerid)
             ", ReturnPlayerName(playerid), dialog_register[E_DIALOG_RESPONSE_InputText]
         );
 
-        str_query_char = str_format(
+        str_query_char = String: str_format(
             "INSERT INTO \
                 characters (char_name) \
             VALUES \
