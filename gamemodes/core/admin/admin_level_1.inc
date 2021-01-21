@@ -103,12 +103,12 @@ ACMD:[1]veh(playerid, const params[])
         vehicleid = CreateVehicle(strval(params), Float: x, Float: y, Float: z, Float: a, 0, 0, 0);   
         PutPlayerInVehicle(playerid, vehicleid, 0);
     
-        Bit_Set(VEHICLE_SPAWNED, playerid, bool: true);
+        Bit_Let(VEHICLE_SPAWNED, playerid);
 
         return 1;
     }
 
-    Bit_Set(VEHICLE_SPAWNED, playerid, bool: false);
+    Bit_Set(VEHICLE_SPAWNED, playerid, false);
     DestroyVehicle(vehicleid);
 
     return 1;

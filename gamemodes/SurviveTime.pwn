@@ -75,6 +75,7 @@ const
 #include <ui>
 #include <help>
 #include <vehicle>
+#include <animations>
 #include <admin>
 
 #include <dealer>
