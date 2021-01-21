@@ -4,6 +4,7 @@
 hook OnPlayerConnect(playerid)
 {
 	check_player_banned(playerid);
+	SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 50);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }

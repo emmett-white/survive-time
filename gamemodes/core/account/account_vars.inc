@@ -31,6 +31,8 @@ set_player_score(const playerid, const int)
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
 
+    ui_update_skin_textdraw(playerid, 2);
+
     return 1;
 }
 
@@ -76,6 +78,8 @@ set_player_skin(const playerid, const int)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
+
+    ui_update_skin_textdraw(playerid, 1);
 
     return 1;
 }

@@ -65,7 +65,7 @@ check_player_account(const playerid)
         dialog_register[e_DIALOG_RESPONSE_INFO];
 
     task_await_arr(
-        ShowPlayerAsyncDialog(
+        Task: ShowPlayerAsyncDialog(
             playerid, DIALOG_STYLE_PASSWORD,
             "Register", "Please, enter your desired password to create an account...",
             "Submit", "Exit"
@@ -126,7 +126,7 @@ do_auth_login(const playerid)
         dialog_login[e_DIALOG_RESPONSE_INFO];
 
     task_await_arr(
-        ShowPlayerAsyncDialog(
+        Task: ShowPlayerAsyncDialog(
             playerid, DIALOG_STYLE_PASSWORD,
             "Login", "Please, enter you correct password to log in...",
             "Submit", "Exit"

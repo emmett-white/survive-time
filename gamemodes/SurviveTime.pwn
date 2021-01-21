@@ -1,6 +1,6 @@
 /**
-  * TODO: Make dealer offers...
-  * ...
+  * TODO: Drug effects
+  * TODO: ...
 */
 
 // * SA-MP stdlib *
@@ -65,7 +65,6 @@ const
 #include <cmd_process>
 #include <shortcuts>
 #include <vehicles>
-
 #include <ban>
 #include <spawn>
 #include <accounts>

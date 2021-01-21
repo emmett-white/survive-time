@@ -17,6 +17,8 @@ set_player_drugs(const playerid, const int)
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_drugs_update);
 
+    ui_update_skin_textdraw(playerid, 3);
+
     return 1;
 }
 

@@ -76,3 +76,14 @@ goto_dealer(const playerid, const dealerid)
 
     return 1;
 }
+
+dealer_nearby(const playerid)
+{
+    foreach (new i: Iter_Dealers) {
+        if (IsPlayerInRangeOfPoint(playerid, Float: 2.0, dealer_x[i], dealer_y[i], dealer_z[i])) {
+            return 1;
+        }
+    }
+
+    return 0;
+}

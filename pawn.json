@@ -17,9 +17,9 @@
 		"maddinat0r/sscanf",
 		"samp-incognito/samp-streamer-plugin",
 		"emmett-white/survive-time",
-		"openmultiplayer/stdlib",
 		"Mergevos/samp-vehicle-framework",
-		"Southclaws/pawn-chrono"
+		"Southclaws/pawn-chrono",
+		"katursis/Pawn.RakNet"
 	],
 	"local": true,
 	"runtime": {
@@ -81,7 +81,12 @@
 				"gamemodes/core/player/warn",
 				"gamemodes/core/player/mute",
 				"gamemodes/core/player/chat",
-				"gamemodes/core/player/report"
+				"gamemodes/core/player/report",
+				"gamemodes/core/player/ui",
+				"gamemodes/core/player/ui/help",
+				"gamemodes/core/player/vehicle",
+				"gamemodes/core/player/spawn",
+				"gamemodes/core/systems/dealer"
 			],
 			"compiler": {}
 		}
