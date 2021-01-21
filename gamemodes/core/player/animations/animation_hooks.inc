@@ -5,7 +5,7 @@ static
 
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
-    if (PRESSED(KEY_NO)) {
+    if (PRESSED(KEY_NO)  && !IsPlayerInAnyVehicle(playerid)) {
         if (!Bit_Get(LAYING_ANIMATION, playerid)) {
             // Smth like lay animation...
             ApplyAnimation(playerid, "PED", "KO_shot_front", 4.0, 0, 1, 1, 1, 0);
