@@ -11,7 +11,7 @@ new
     char_skin[MAX_PLAYERS];
 
 // * Set functions *
-set_player_score(const playerid, const int)
+Player_SetScore(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -26,17 +26,17 @@ set_player_score(const playerid, const int)
             char_score = '%d' \
         WHERE \
             char_name = '%e'",
-        get_player_score(playerid), ReturnPlayerName(playerid)
+        Player_GetScore(playerid), ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
 
-    ui_update_skin_textdraw(playerid, 2);
+    UI_UpdatePlayerTextDraw(playerid, 2);
 
     return 1;
 }
 
-set_player_money(const playerid, const int)
+Player_SetMoney(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -51,7 +51,7 @@ set_player_money(const playerid, const int)
             char_money = '%d' \
         WHERE \
             char_name = '%e'",
-        (GetPlayerMoney(playerid) + get_player_money(playerid)), ReturnPlayerName(playerid)
+        (GetPlayerMoney(playerid) + Player_GetMoney(playerid)), ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
@@ -59,7 +59,7 @@ set_player_money(const playerid, const int)
     return 1;
 }
 
-set_player_skin(const playerid, const int)
+Player_SetSkin(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -74,28 +74,28 @@ set_player_skin(const playerid, const int)
             char_skin = '%d' \
         WHERE \
             char_name = '%e'",
-        get_player_skin(playerid), ReturnPlayerName(playerid)
+        Player_GetSkin(playerid), ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
 
-    ui_update_skin_textdraw(playerid, 1);
+    UI_UpdatePlayerTextDraw(playerid, 1);
 
     return 1;
 }
 
 // * Get functions *
-get_player_score(const playerid)
+Player_GetScore(const playerid)
 {
     return char_score[playerid];
 }
 
-get_player_money(const playerid)
+Player_GetMoney(const playerid)
 {
     return char_money[playerid];
 }
 
-get_player_skin(const playerid)
+Player_GetSkin(const playerid)
 {
     return char_skin[playerid];
 }

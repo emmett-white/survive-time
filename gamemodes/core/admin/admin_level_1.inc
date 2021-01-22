@@ -7,7 +7,7 @@ ACMD:[1]ban(playerid, const params[])
         return usage(playerid, "/ban [targetid] [reason]");
     }
 
-    ban_player(targetid, playerid, reason);
+    BanPlayer(targetid, playerid, reason);
 
     return 1;
 }
@@ -18,7 +18,7 @@ ACMD:[1]unban(playerid, const params[])
         return usage(playerid, "/unban [name]");
     }
 
-    unban_player(playerid, params);
+    UnbanPlayer(playerid, params);
 
     return 1;
 }
@@ -66,7 +66,7 @@ ACMD:[1]mute(playerid, const params[])
         return usage(playerid, "/mute [targetid] [reason] [minutes]");
     }
 
-    mute_player(playerid, targetid, reason, minutes);
+    MutePlayer(playerid, targetid, reason, minutes);
     
     return 1;
 }
@@ -77,7 +77,7 @@ ACMD:[1]unmute(playerid, const params[])
         return usage(playerid, "/unmute [targetid]");
     }
 
-    unmute_player(playerid, strval(params));
+    UnMutePlayer(playerid, strval(params));
 
     return 1;
 }
@@ -133,8 +133,9 @@ ACMD:[1]a(playerid, const params[])
     }
 
     foreach (new i: Player) {
-        if (get_player_admin(i))
+        if (Admin_GetLevel(i)) {
             va_SendClientMessage(i, X11_RED, "* Admin-Chat: "WHITE"(%d)%s: %s", i, ReturnPlayerName(i), params);
+        }
     }
 
     return 1;
@@ -160,7 +161,7 @@ ACMD:[1]gotodealer(playerid, const params[])
         return usage(playerid, "/gotodealer [dealer id]");
     }
 
-    goto_dealer(playerid, strval(params));
+    Dealer_Goto(playerid, strval(params));
 
     return 1;
 }

@@ -1,10 +1,10 @@
 CMD:warns(playerid, const params[])
 {
-    if (!get_player_warns(playerid)) {
+    if (!Player_GetWarns(playerid)) {
         return err(playerid, "You aren't warned!");
     }
 
-    fmt_info(playerid, "You have %d warn(s).", get_player_warns(playerid));
+    fmt_info(playerid, "You have %d warn(s).", Player_GetWarns(playerid));
     
     return 1;
 }

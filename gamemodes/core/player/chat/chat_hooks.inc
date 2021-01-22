@@ -1,11 +1,11 @@
 hook OnPlayerText(playerid, text[])
 {
-    if (get_player_muted(playerid)) {
-        return fmt_err(playerid, "You're muted for %d minutes.", get_player_muted_mins(playerid)), 0;
+    if (Player_GetMuted(playerid)) {
+        return fmt_err(playerid, "You're muted for %d minutes.", Player_GetMutedMins(playerid)), 0;
     }
 
     // Admin chat
-    if (IsPlayerAdmin(playerid) || get_player_admin(playerid) >= 1 && text[0] == '#') {
+    if (IsPlayerAdmin(playerid) || Admin_GetLevel(playerid) >= 1 && text[0] == '#') {
         return va_SendClientMessageToAll(
             X11_RED, "(%d) %s: "WHITE"%s", playerid, ReturnPlayerName(playerid), text
         ), 0;

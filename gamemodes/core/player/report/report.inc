@@ -2,7 +2,7 @@ static
     player_report_time[MAX_PLAYERS];
 
 // * Get/Set functions *
-set_player_report_time(const playerid, const int)
+Player_SetReportTime(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -13,7 +13,7 @@ set_player_report_time(const playerid, const int)
     return 1;
 }
 
-get_player_report_time(const playerid)
+Player_GetReportTime(const playerid)
 {
     return player_report_time[playerid];
 }

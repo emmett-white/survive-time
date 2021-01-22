@@ -1,4 +1,4 @@
-check_player_account(const playerid)
+CheckPlayerAccExists(const playerid)
 {
     task_await(
         Task: MySQL_QueryS(
@@ -26,34 +26,34 @@ check_player_account(const playerid)
             static tmpint = 0;
             
             cache_get_value_name_int(0, "char_score", tmpint);
-            set_player_score(playerid, tmpint);
+            Player_SetScore(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_money", tmpint);
-            set_player_money(playerid, tmpint);
+            Player_SetMoney(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_admin", tmpint);
-            set_player_admin(playerid, tmpint);
+            Admin_Set(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_admincode", tmpint);
-            set_player_admin_code(playerid, tmpint);
+            Admin_SetCode(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_skin", tmpint);
-            set_player_skin(playerid, tmpint);
+            Player_SetSkin(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_warn", tmpint);
-            set_player_warns(playerid, tmpint);
+            Player_SetWarns(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_muted", tmpint);
-            set_player_muted(playerid, tmpint);
+            Player_SetMuted(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_mutedmins", tmpint);
-            set_player_muted_mins(playerid, tmpint);
+            Player_SetMutedMins(playerid, tmpint);
 
             cache_get_value_name_int(0, "char_drugs", tmpint);
-            set_player_drugs(playerid, tmpint);
+            Player_SetDrugs(playerid, tmpint);
         }
 
-        do_auth_login(playerid);
+        Auth_DoLogin(playerid);
     
         return 1;
     }
@@ -104,12 +104,12 @@ check_player_account(const playerid)
 
         fmt_info(playerid, "%s welcome to the Survive Time server!", ReturnPlayerName(playerid));
 
-        set_player_score(playerid, 1);
-        set_player_money(playerid, 100);
-        set_player_skin(playerid, 26);
+        Player_SetScore(playerid, 1);
+        Player_SetMoney(playerid, 100);
+        Player_SetSkin(playerid, 26);
 
-        SetPlayerScore(playerid, get_player_score(playerid));
-        GivePlayerMoney(playerid, get_player_money(playerid));
+        SetPlayerScore(playerid, Player_GetScore(playerid));
+        GivePlayerMoney(playerid, Player_GetMoney(playerid));
 
         defer spawn_player(playerid);
         GameTextForPlayer(playerid, "~y~CREATING ACCOUNT...", 3000, 3);
@@ -118,7 +118,7 @@ check_player_account(const playerid)
     return 1;
 }
 
-do_auth_login(const playerid)
+Auth_DoLogin(const playerid)
 {
     task_yield(1);
         
@@ -137,8 +137,8 @@ do_auth_login(const playerid)
         if (!strcmp(dialog_login[E_DIALOG_RESPONSE_InputText], account_password[playerid], false)) {
             fmt_info(playerid, "%s you've successfully logged in.", ReturnPlayerName(playerid));
 
-            SetPlayerScore(playerid, get_player_score(playerid));
-            GivePlayerMoney(playerid, get_player_money(playerid));
+            SetPlayerScore(playerid, Player_GetScore(playerid));
+            GivePlayerMoney(playerid, Player_GetMoney(playerid));
 
             defer spawn_player(playerid);
             GameTextForPlayer(playerid, "~y~LOADING ACCOUNT...", 3000, 3);
@@ -148,7 +148,7 @@ do_auth_login(const playerid)
             ++player_login_attempts[playerid];
             fmt_err(playerid, "Wrong password, attempts: %d/3.", player_login_attempts[playerid]);
 
-            do_auth_login(playerid);
+            Auth_DoLogin(playerid);
 
             if (player_login_attempts[playerid] == 3) {
                 return Kick(playerid);

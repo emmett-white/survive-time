@@ -2,7 +2,7 @@ static
     PlayerText: help_msg_textdraw[MAX_PLAYERS] = {PlayerText: INVALID_TEXT_DRAW, ...};
 
 // * Functions *
-ui_create_player_help_msg(const playerid, bool: status = true)
+UI_CreatePlayerHelpMsg(const playerid, bool: status = true)
 {
     if (!status) {
         PlayerTextDrawHide(playerid, PlayerText: help_msg_textdraw[playerid]);
@@ -26,7 +26,7 @@ ui_create_player_help_msg(const playerid, bool: status = true)
     return 1;
 }
 
-show_player_help_msg(const playerid, const string: fmt[], va_args<>)
+UI_ShowPlayerHelpMsg(const playerid, const string: fmt[], va_args<>)
 {
     PlayerTextDrawShow(playerid, PlayerText: help_msg_textdraw[playerid]);
     PlayerTextDrawSetString(playerid, PlayerText: help_msg_textdraw[playerid], va_return(fmt, va_start<2>));
@@ -39,5 +39,5 @@ show_player_help_msg(const playerid, const string: fmt[], va_args<>)
 // * Hide messae timer *
 timer hide_help_msg[2000](playerid)
 {
-    ui_create_player_help_msg(playerid, false);
+    UI_CreatePlayerHelpMsg(playerid, false);
 }

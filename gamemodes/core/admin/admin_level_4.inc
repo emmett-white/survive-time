@@ -4,7 +4,7 @@ ACMD:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, const param
         return usage(playerid, "/setadmin [targetid] [level] [code]");
     }
 
-    set_admin_level(targetid, playerid, level, code);
+    SetPlayerAdminLevel(targetid, playerid, level, code);
 
     return 1;
 }
@@ -19,7 +19,7 @@ ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
         return err(playerid, "You can't give less than $1 and more than $1.000.000!");
     }
 
-    set_player_money(playerid, amt);
+    Player_SetMoney(playerid, amt);
     GivePlayerMoney(targetid, amt);
 
     fmt_info(playerid, "You gave $%d to %s.", amt, ReturnPlayerName(targetid));
@@ -39,7 +39,7 @@ ACMD:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
     }
 
     SetPlayerScore(targetid, level);
-    set_player_score(playerid, level);
+    Player_SetScore(playerid, level);
 
     fmt_info(playerid, "You set %s a score to %d.", ReturnPlayerName(targetid), level);
     fmt_info(targetid, "Admin %s set your score to %d.", ReturnPlayerName(playerid), level);
@@ -62,7 +62,7 @@ ACMD:[MAX_ADMIN_LEVEL]createdealer(playerid, const params[])
     GetPlayerPos(playerid, Float: x, Float: y, Float: z);
     GetPlayerFacingAngle(playerid, Float: a);
 
-    create_dealer(skin, name, Float: x, Float: y, Float: z, Float: a);
+    Dealer_Create(skin, name, Float: x, Float: y, Float: z, Float: a);
 
     return 1;
 }

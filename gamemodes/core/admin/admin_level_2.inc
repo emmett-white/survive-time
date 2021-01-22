@@ -4,9 +4,9 @@ ACMD:[2]warn(playerid, const params[])
         return usage(playerid, "/warn [targetid] [reason]");
     }
 
-    set_player_warns(targetid, (get_player_warns(targetid) + 1));
+    Player_SetWarns(targetid, (Player_GetWarns(targetid) + 1));
 
-    if (get_player_warns(targetid) == (MAX_WARNS + 1)) {
+    if (Player_GetWarns(targetid) == (MAX_WARNS + 1)) {
         va_SendClientMessageToAll(
             X11_RED, "* Ban: "WHITE"Player %s has been banned (5 warns).", ReturnPlayerName(targetid)
         );

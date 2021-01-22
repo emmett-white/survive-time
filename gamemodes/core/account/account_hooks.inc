@@ -3,7 +3,7 @@
 // * Hooks *
 hook OnPlayerConnect(playerid)
 {
-	check_player_banned(playerid);
+	CheckPlayerBanStatus(playerid);
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 50);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
@@ -29,10 +29,10 @@ hook OnPlayerSpawn(playerid)
 	SetPlayerFacingAngle(playerid, Float: pos_a);
 	SetPlayerInterior(playerid, interior);
 	SetPlayerVirtualWorld(playerid, world);
-	SetPlayerSkin(playerid, get_player_skin(playerid));
+	SetPlayerSkin(playerid, Player_GetSkin(playerid));
 
-	ui_create_player_textdraws(playerid);
-	ui_create_player_help_msg(playerid);
+	UI_CreatePlayerTextDraws(playerid);
+	UI_CreatePlayerHelpMsg(playerid);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }

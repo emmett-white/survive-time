@@ -1,4 +1,4 @@
-check_player_banned(const playerid)
+CheckPlayerBanStatus(const playerid)
 {
     task_await(
         Task: MySQL_QueryS(
@@ -34,7 +34,7 @@ check_player_banned(const playerid)
         return 1;
     }
 
-    check_player_account(playerid);
+    CheckPlayerAccExists(playerid);
 
     return 1;
 }
@@ -44,7 +44,7 @@ check_player_banned(const playerid)
   * <param name="adminid">Admin who will ban player</param>
   * <param name="reason">The reason why the player is banned</param>
 */
-ban_player(const playerid, const adminid, const string: reason[])
+BanPlayer(const playerid, const adminid, const string: reason[])
 {
     if (playerid == adminid) {
         return err(adminid, "You can't ban yourself!");
@@ -78,7 +78,7 @@ ban_player(const playerid, const adminid, const string: reason[])
   * <param name="playerid">Admin who will unban player</param>
   * <param name="name">Player who will be unbanned</param>
 */
-unban_player(const playerid, const string: name[])
+UnbanPlayer(const playerid, const string: name[])
 {
     task_await(
         MySQL_QueryS(

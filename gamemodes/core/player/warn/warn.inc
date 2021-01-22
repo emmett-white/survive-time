@@ -3,7 +3,7 @@ static
     char_warn_num[MAX_PLAYERS] = 0;
 
 // * Functions *
-set_player_warns(const playerid, const warns)
+Player_SetWarns(const playerid, const warns)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -14,7 +14,7 @@ set_player_warns(const playerid, const warns)
     return 1;
 }
 
-get_player_warns(const playerid)
+Player_GetWarns(const playerid)
 {
     return char_warn_num[playerid];
 }

@@ -9,7 +9,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
             Vehicle_GetEngineState(GetPlayerVehicleID(playerid)) ? (E_ENGINE_STATE_OFF) : (E_ENGINE_STATE_ON)
         );
 
-        show_player_help_msg(
+        UI_ShowPlayerHelpMsg(
             playerid, "~w~You_have_switched_%s_~w~the_vehice_engine.",
             Vehicle_GetEngineState(GetPlayerVehicleID(playerid)) ? ("~g~on") : ("~r~off")
         );
@@ -21,7 +21,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
             Vehicle_GetLightsRunState(GetPlayerVehicleID(playerid)) ? (E_LIGHTS_OFF) : (E_LIGHTS_ON)
         );
 
-        show_player_help_msg(
+        UI_ShowPlayerHelpMsg(
             playerid, "~w~You_have_switched_%s_~w~the_vehice_lights.",
             Vehicle_GetLightsRunState(GetPlayerVehicleID(playerid)) ? ("~g~on") : ("~r~off")
         );
@@ -33,7 +33,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
             Vehicle_GetLockState(GetPlayerVehicleID(playerid)) ? (E_LOCK_STATE_OFF) : (E_LOCK_STATE_ON)
         );
 
-        show_player_help_msg(
+        UI_ShowPlayerHelpMsg(
             playerid, "~w~You_have_%s_~w~the_vehice.",
             Vehicle_GetLockState(GetPlayerVehicleID(playerid)) ? ("~r~locked") : ("~g~unlocked")
         );

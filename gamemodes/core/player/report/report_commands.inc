@@ -1,6 +1,6 @@
 CMD:report(playerid, const params[])
 {
-    if (gettime() < get_player_report_time(playerid)) {
+    if (gettime() < Player_GetReportTime(playerid)) {
         return err(playerid, "You can use this command every 2 minutes!");
     }
 
@@ -8,14 +8,14 @@ CMD:report(playerid, const params[])
         return usage(playerid, "/report [targetid] [reason]");
     }
 
-    report_player(targetid, playerid, reason);
+    ReportPlayer(targetid, playerid, reason);
 
     return 1;
 }
 
 CMD:reportbug(playerid, const params[])
 {
-    if (gettime() < get_player_report_time(playerid)) {
+    if (gettime() < Player_GetReportTime(playerid)) {
         return err(playerid, "You can use this command every 2 minutes!");
     }
 
@@ -23,7 +23,7 @@ CMD:reportbug(playerid, const params[])
         return usage(playerid, "/reportbug [bug]");
     }
 
-    report_bug(playerid, params);
+    ReportBug(playerid, params);
 
     return 1;
 }

@@ -3,7 +3,7 @@ static
     char_muted_mins[MAX_PLAYERS];
 
 // * Set functions *
-set_player_muted(const playerid, const int)
+Player_SetMuted(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -18,7 +18,7 @@ set_player_muted(const playerid, const int)
             char_muted = '%d' \
         WHERE \
             char_name = '%e'",
-        get_player_muted(playerid), ReturnPlayerName(playerid)
+        Player_GetMuted(playerid), ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
@@ -26,7 +26,7 @@ set_player_muted(const playerid, const int)
     return 1;
 }
 
-set_player_muted_mins(const playerid, const int)
+Player_SetMutedMins(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -41,7 +41,7 @@ set_player_muted_mins(const playerid, const int)
             char_muted = '%d', char_mutedmins = '%d' \
         WHERE \
             char_name = '%e'",
-        get_player_muted(playerid), get_player_muted_mins(playerid), ReturnPlayerName(playerid)
+        Player_GetMuted(playerid), Player_GetMutedMins(playerid), ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
@@ -50,12 +50,12 @@ set_player_muted_mins(const playerid, const int)
 }
 
 // * Get functions *
-get_player_muted(const playerid)
+Player_GetMuted(const playerid)
 {
     return char_muted[playerid];
 }
 
-get_player_muted_mins(const playerid)
+Player_GetMutedMins(const playerid)
 {
     return char_muted_mins[playerid];
 }

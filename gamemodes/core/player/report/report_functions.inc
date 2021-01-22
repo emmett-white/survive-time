@@ -3,23 +3,23 @@
   * <param name="playerid">player who will report player (targetid)</param>
   * <param name="reason">the reason why targetid will be reported</param>
 */
-report_player(const targetid, const playerid, const string: reason[])
+ReportPlayer(const targetid, const playerid, const string: reason[])
 {
     if (targetid == playerid) {
         return err(playerid, "You can't report yourself!");
 	}
 
-    msg_admin(
+    SendMessageToAdmins(
         X11_RED, "[Player Report]: "WHITE"%s reported player %s for %s.",
         ReturnPlayerName(playerid), ReturnPlayerName(targetid), reason
     );
 
-    set_player_report_time(playerid, (gettime() + 120));
+    Player_SetReportTime(playerid, (gettime() + 120));
 
     return 1;
 }
 
-report_bug(const playerid, const string: reason[])
+ReportBug(const playerid, const string: reason[])
 {
 	task_await(
 		Task: MySQL_QueryS(
@@ -41,7 +41,7 @@ report_bug(const playerid, const string: reason[])
 	);
 
 	mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_report_update);
-	set_player_report_time(playerid, (gettime() + 120));
+	Player_SetReportTime(playerid, (gettime() + 120));
 
 	return 1;
 }

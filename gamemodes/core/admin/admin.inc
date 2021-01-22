@@ -3,10 +3,10 @@ static
     char_admin_code[MAX_PLAYERS];
 
 // * Functions *
-msg_admin(colour, const string: text[], va_args<>)
+SendMessageToAdmins(colour, const string: text[], va_args<>)
 {
     foreach (new i: Player) {
-        if (get_player_admin(i)) {
+        if (Admin_GetLevel(i)) {
             return SendClientMessage(i, colour, va_return(text, va_start<2>));
         }
     }
@@ -15,7 +15,7 @@ msg_admin(colour, const string: text[], va_args<>)
 }
 
 // * Set functions *
-set_player_admin(const playerid, const int)
+Admin_Set(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -30,7 +30,7 @@ set_player_admin(const playerid, const int)
             char_admin = '%d' \
         WHERE \
             char_name = '%e'",
-        get_player_admin(playerid), ReturnPlayerName(playerid)
+        Admin_GetLevel(playerid), ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
@@ -38,7 +38,7 @@ set_player_admin(const playerid, const int)
     return 1;
 }
 
-set_player_admin_code(const playerid, const int)
+Admin_SetCode(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -53,7 +53,7 @@ set_player_admin_code(const playerid, const int)
             char_admincode = '%d' \
         WHERE \
             char_name = '%e'",
-        get_player_admin_code(playerid), ReturnPlayerName(playerid)
+        Admin_GetCode(playerid), ReturnPlayerName(playerid)
     );
 
     mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_update);
@@ -62,12 +62,12 @@ set_player_admin_code(const playerid, const int)
 }
 
 // * Get functions *
-get_player_admin(const playerid)
+Admin_GetLevel(const playerid)
 {
     return char_admin[playerid];
 }
 
-get_player_admin_code(const playerid)
+Admin_GetCode(const playerid)
 {
     return char_admin_code[playerid];
 }

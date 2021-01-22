@@ -16,8 +16,15 @@ new
     
     dealer_name[MAX_DEALERS][MAX_PLAYER_NAME];
 
-// * Functions *
-create_dealer(const skin, const string: name[], Float: x, Float: y, Float: z, Float: a)
+/**
+  * <param name="skin">Skin of the dealer actor</param>
+  * <param name="name">Name of the dealer (3D Text Label)</param>
+  * <param name="x">Dealer x pos</param>
+  * <param name="y">Dealer y pos</param>
+  * <param name="z">Dealer z pos</param>
+  * <param name="a">Dealer angle</param>
+*/
+Dealer_Create(const skin, const string: name[], Float: x, Float: y, Float: z, Float: a)
 {
     new
         id = Iter_Alloc(Iter_Dealers);
@@ -58,7 +65,7 @@ create_dealer(const skin, const string: name[], Float: x, Float: y, Float: z, Fl
     return 1;
 }
 
-goto_dealer(const playerid, const dealerid)
+Dealer_Goto(const playerid, const dealerid)
 {
     task_await(
         Task: MySQL_QueryS(
@@ -77,7 +84,7 @@ goto_dealer(const playerid, const dealerid)
     return 1;
 }
 
-dealer_nearby(const playerid)
+Dealer_Nearby(const playerid)
 {
     foreach (new i: Iter_Dealers) {
         if (IsPlayerInRangeOfPoint(playerid, Float: 2.0, dealer_x[i], dealer_y[i], dealer_z[i])) {

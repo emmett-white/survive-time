@@ -3,14 +3,14 @@ static
     ui_status[MAX_PLAYERS];
 
 // * Functions *
-ui_create_player_textdraws(const playerid, bool: status = true)
+UI_CreatePlayerTextDraws(const playerid, bool: status = true)
 {
     if (!status) {
         for (new i = 0; i < 14; ++i) {
             PlayerTextDrawDestroy(playerid, PlayerText: ui_textdraw[playerid][i]);
         }
 
-        set_player_ui_status(playerid, 0);
+        Player_SetUIStatus(playerid, 0);
 
         return 1;
     }
@@ -63,7 +63,7 @@ ui_create_player_textdraws(const playerid, bool: status = true)
     PlayerTextDrawFont(playerid, ui_textdraw[playerid][4], 2);
     PlayerTextDrawSetProportional(playerid, ui_textdraw[playerid][4], 1);
 
-    ui_textdraw[playerid][5] = va_CreatePlayerTextDraw(playerid, 585.899047, 368.006713, "SCORE: ~y~%d", get_player_score(playerid));
+    ui_textdraw[playerid][5] = va_CreatePlayerTextDraw(playerid, 585.899047, 368.006713, "SCORE: ~y~%d", Player_GetScore(playerid));
     PlayerTextDrawLetterSize(playerid, ui_textdraw[playerid][5], 0.228799, 1.017599);
     PlayerTextDrawTextSize(playerid, ui_textdraw[playerid][5], 0.000000, 1024.000000);
     PlayerTextDrawAlignment(playerid, ui_textdraw[playerid][5], 2);
@@ -73,7 +73,7 @@ ui_create_player_textdraws(const playerid, bool: status = true)
     PlayerTextDrawFont(playerid, ui_textdraw[playerid][5], 2);
     PlayerTextDrawSetProportional(playerid, ui_textdraw[playerid][5], 1);
 
-    ui_textdraw[playerid][6] = va_CreatePlayerTextDraw(playerid, 585.199218, 383.707672, "DRUGS: ~y~%d", get_player_drugs(playerid));
+    ui_textdraw[playerid][6] = va_CreatePlayerTextDraw(playerid, 585.199218, 383.707672, "DRUGS: ~y~%d", Player_GetDrugs(playerid));
     PlayerTextDrawLetterSize(playerid, ui_textdraw[playerid][6], 0.228799, 1.017599);
     PlayerTextDrawTextSize(playerid, ui_textdraw[playerid][6], 0.000000, 1024.000000);
     PlayerTextDrawAlignment(playerid, ui_textdraw[playerid][6], 2);
@@ -151,12 +151,12 @@ ui_create_player_textdraws(const playerid, bool: status = true)
         PlayerTextDrawShow(playerid, PlayerText: ui_textdraw[playerid][i]);
     }
 
-    set_player_ui_status(playerid, 1);
+    Player_SetUIStatus(playerid, 1);
 
     return 1;
 }
 
-ui_update_skin_textdraw(const playerid, value)
+UI_UpdatePlayerTextDraw(const playerid, value)
 {
     switch (value) {
         case 1: {
@@ -169,14 +169,14 @@ ui_update_skin_textdraw(const playerid, value)
         case 2: {
             va_PlayerTextDrawSetString(
                 playerid, PlayerText: ui_textdraw[playerid][5],
-                "SCORE: ~y~%d", get_player_score(playerid)
+                "SCORE: ~y~%d", Player_GetScore(playerid)
             );
         }
 
         case 3: {
             va_PlayerTextDrawSetString(
                 playerid, PlayerText: ui_textdraw[playerid][6],
-                "DRUGS: ~y~%d", get_player_drugs(playerid)
+                "DRUGS: ~y~%d", Player_GetDrugs(playerid)
             );
         }
     }
@@ -185,14 +185,14 @@ ui_update_skin_textdraw(const playerid, value)
 }
 
 // * Get/Set functions *
-set_player_ui_status(const playerid, const int)
+Player_SetUIStatus(const playerid, const int)
 {
     ui_status[playerid] = int;
 
     return 1;
 }
 
-get_player_ui_status(const playerid)
+Player_GetUIStatus(const playerid)
 {
     return ui_status[playerid];
 }

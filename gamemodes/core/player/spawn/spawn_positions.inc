@@ -22,7 +22,7 @@ timer spawn_player[3000](playerid)
         rand = random(sizeof spawn_positions);
     
     SetSpawnInfo(
-        playerid, 0, get_player_skin(playerid),
+        playerid, 0, Player_GetSkin(playerid),
         spawn_positions[rand][0], spawn_positions[rand][1], spawn_positions[rand][2], spawn_positions[rand][3],
         0, 0, 0, 0, 0, 0
     );

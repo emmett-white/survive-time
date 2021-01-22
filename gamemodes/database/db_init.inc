@@ -7,7 +7,7 @@ static
 // * Hooks *
 hook OnGameModeInit()
 {
-    db_create_conn();
+    DB_CreateConnection();
     pp_use_funcidx(true);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
@@ -15,14 +15,15 @@ hook OnGameModeInit()
 
 hook OnGameModeExit()
 {
-    if (!mysql_close(db_handle))
+    if (!mysql_close(db_handle)) {
         print("Failed to terminate the database connection. Please check this.");
+    }
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
 
 // * Functions *
-static db_create_conn()
+static DB_CreateConnection()
 {
     static
         env_hostname[10],

@@ -1,12 +1,12 @@
-forward on_dealer_created(const dealerid);
-public on_dealer_created(const dealerid)
+forward OnDealerCreated(const dealerid);
+public OnDealerCreated(const dealerid)
 {
     dealer_id[dealerid] = cache_insert_id();
     return 1;
 }
 
-forward check_dealer_exists();
-public check_dealer_exists()
+forward CheckDealerExists();
+public CheckDealerExists()
 {
     if (!cache_num_rows()) {
         return print("err: 0 dealers found in database!");
