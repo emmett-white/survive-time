@@ -86,7 +86,10 @@
 				"gamemodes/core/player/ui/help",
 				"gamemodes/core/player/vehicle",
 				"gamemodes/core/player/spawn",
-				"gamemodes/core/systems/dealer"
+				"gamemodes/core/systems/dealer",
+				"gamemodes/core/player/animations",
+				"gamemodes/core/jobs",
+				"gamemodes/core/jobs/bus"
 			],
 			"compiler": {}
 		}

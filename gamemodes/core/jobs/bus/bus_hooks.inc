@@ -98,7 +98,8 @@ hook OnPlayerConnect(playerid)
 
 hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 {
-    for (new i = 0; i < sizeof Bus_Vehicle; ++i) {
+    if (Bus_ValidVeh(vehicleid))
+    {
         if (Player_GetJob(playerid) != _:E_PLAYER_JOB_BUS) {
             ClearAnimations(playerid);
             GameTextForPlayer(playerid, "~r~You can't drive that vehicle!", 2000, 3);
@@ -106,6 +107,17 @@ hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
     }
 
     return Y_HOOKS_CONTINUE_RETURN_1;
+}
+
+Bus_ValidVeh(vehid)
+{
+    for (new i = 0; i < sizeof Bus_Vehicle; ++i) {
+        if (vehid == Bus_Vehicle[i]) {
+            return 1;
+        }
+    }
+
+    return 0;
 }
 
 // PLAYER_COMMAND:test(playerid, const params[])

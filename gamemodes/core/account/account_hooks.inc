@@ -30,7 +30,7 @@ hook OnPlayerSpawn(playerid)
 	SetPlayerInterior(playerid, interior);
 	SetPlayerVirtualWorld(playerid, world);
 	SetPlayerSkin(playerid, Player_GetSkin(playerid));
-
+	
 	UI_CreatePlayerTextDraws(playerid);
 	UI_CreatePlayerHelpMsg(playerid);
 
