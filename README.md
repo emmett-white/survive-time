@@ -58,7 +58,7 @@ static
 // Brace style
 // Allman
 // eg.
-func_name(const playerid, ...)
+Func_Name(const playerid, ...)
 {
     if (...) {
         return ...;
@@ -74,15 +74,15 @@ func_name(const playerid, ...)
 }
 
 // Function names
-// Functions and callbacks in lowercase
+// Functions and callbacks in CamelCase
 // eg.
-get_player_level(const playerid)
+Player_GetLevel(const playerid)
 {
     return char_score[playerid];
 }
 
-forward init_player_account(const playerid);
-public init_player_account(const playerid)
+forward OnAccountRegistered(const playerid);
+public OnAccountRegistered(const playerid)
 {
     account_id[playerid] = cache_insert_id();
     return 1;
