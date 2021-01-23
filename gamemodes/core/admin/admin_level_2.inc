@@ -1,4 +1,4 @@
-ACMD:[2]warn(playerid, const params[])
+ADMIN_COMMAND:[2]warn(playerid, const params[])
 {
     extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else {
         return usage(playerid, "/warn [targetid] [reason]");
@@ -25,7 +25,7 @@ ACMD:[2]warn(playerid, const params[])
     return 1;
 }
 
-ACMD:[2]goto(playerid, const params[])
+ADMIN_COMMAND:[2]goto(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/goto [targetid]");
@@ -45,7 +45,7 @@ ACMD:[2]goto(playerid, const params[])
     return 1;
 }
 
-ACMD:[2]get(playerid, const params[])
+ADMIN_COMMAND:[2]get(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/get [targetid]");

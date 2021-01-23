@@ -1,4 +1,4 @@
-CMD:report(playerid, const params[])
+PLAYER_COMMAND:report(playerid, const params[])
 {
     if (gettime() < Player_GetReportTime(playerid)) {
         return err(playerid, "You can use this command every 2 minutes!");
@@ -13,7 +13,7 @@ CMD:report(playerid, const params[])
     return 1;
 }
 
-CMD:reportbug(playerid, const params[])
+PLAYER_COMMAND:reportbug(playerid, const params[])
 {
     if (gettime() < Player_GetReportTime(playerid)) {
         return err(playerid, "You can use this command every 2 minutes!");

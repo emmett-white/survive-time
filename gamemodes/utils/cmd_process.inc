@@ -4,8 +4,8 @@
     #undef CMD
 #endif
 
-#define CMD:%1(%2) forward cmd_%1(%2); public cmd_%1(%2)
-#define ACMD:[%0]%1(%2,%3) CMD:%1(%2,%3) if (Admin_GetLevel(%2) < %0) return 0; else
+#define PLAYER_COMMAND:%1(%2) forward cmd_%1(%2); public cmd_%1(%2)
+#define ADMIN_COMMAND:[%0]%1(%2,%3) PLAYER_COMMAND:%1(%2,%3) if (Admin_GetLevel(%2) < %0) return 0; else
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {

@@ -1,4 +1,4 @@
-CMD:dealer(playerid, const params[])
+PLAYER_COMMAND:dealer(playerid, const params[])
 {
     if (!Dealer_Nearby(playerid)) {
         return err(playerid, "You've to be close to the dealer!");

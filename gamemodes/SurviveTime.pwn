@@ -1,6 +1,6 @@
 /**
   * TODO: Drug effects
-  * TODO: ...
+  * TODO: /bus command (checkpoints etc.)
 */
 
 // * SA-MP stdlib *
@@ -80,6 +80,8 @@ const
 
 #include <dealer>
 
+#include <jobs>
+
 main()
 {
 	printf("JIT is %spresent", (IsJITPresent() ? ("not ") : ("")));
@@ -102,10 +104,10 @@ public OnGameModeInit()
 	UsePlayerPedAnims();
 
 	// Loading vehicles
-	LoadStaticVehiclesFromFile("vehicles/ls_airport.txt");
-	LoadStaticVehiclesFromFile("vehicles/ls_gen_inner.txt");
-	LoadStaticVehiclesFromFile("vehicles/ls_gen_outer.txt");
-	LoadStaticVehiclesFromFile("vehicles/ls_law.txt");
+	// LoadStaticVehiclesFromFile("vehicles/ls_airport.txt");
+	// LoadStaticVehiclesFromFile("vehicles/ls_gen_inner.txt");
+	// LoadStaticVehiclesFromFile("vehicles/ls_gen_outer.txt");
+	// LoadStaticVehiclesFromFile("vehicles/ls_law.txt");
 	LoadStaticVehiclesFromFile("vehicles/red_country.txt");
 
 	return 1;

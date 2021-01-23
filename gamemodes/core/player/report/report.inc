@@ -1,5 +1,5 @@
 static
-    player_report_time[MAX_PLAYERS];
+    char_report_time[MAX_PLAYERS];
 
 // * Get/Set functions *
 Player_SetReportTime(const playerid, const int)
@@ -8,14 +8,14 @@ Player_SetReportTime(const playerid, const int)
         return 0;
     }
 
-    player_report_time[playerid] = int;
+    char_report_time[playerid] = int;
 
     return 1;
 }
 
 Player_GetReportTime(const playerid)
 {
-    return player_report_time[playerid];
+    return char_report_time[playerid];
 }
 
 #include <report_functions>

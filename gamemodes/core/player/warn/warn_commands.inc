@@ -1,4 +1,4 @@
-CMD:warns(playerid, const params[])
+PLAYER_COMMAND:warns(playerid, const params[])
 {
     if (!Player_GetWarns(playerid)) {
         return err(playerid, "You aren't warned!");

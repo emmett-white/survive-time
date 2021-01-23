@@ -99,8 +99,8 @@ CheckPlayerAccExists(const playerid)
             ", ReturnPlayerName(playerid)
         );
 
-        mysql_tquery_s(MySQL_GetHandle(), str_query_acc, "init_player_account", "d", playerid);
-        mysql_tquery_s(MySQL_GetHandle(), str_query_char, "init_player_character", "d", playerid);
+        mysql_tquery_s(MySQL_GetHandle(), str_query_acc, "OnAccountRegistered", "d", playerid);
+        mysql_tquery_s(MySQL_GetHandle(), str_query_char, "OnCharacterRegistered", "d", playerid);
 
         fmt_info(playerid, "%s welcome to the Survive Time server!", ReturnPlayerName(playerid));
 

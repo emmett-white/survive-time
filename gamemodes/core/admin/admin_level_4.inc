@@ -1,4 +1,4 @@
-ACMD:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, const params[])
+ADMIN_COMMAND:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, const params[])
 {
     extract params -> new targetid, level, code; else {
         return usage(playerid, "/setadmin [targetid] [level] [code]");
@@ -9,7 +9,7 @@ ACMD:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, const param
     return 1;
 }
 
-ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
+ADMIN_COMMAND:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
 {
     extract params -> new targetid, amt; else {
         return usage(playerid, "/givemoney [targetid] [amount]");
@@ -28,7 +28,7 @@ ACMD:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
     return 1;
 }
 
-ACMD:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
+ADMIN_COMMAND:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
 {
     extract params -> new targetid, level; else {
         return usage(playerid, "/setlevel [targetid] [level]");
@@ -47,7 +47,7 @@ ACMD:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
     return 1;
 }
 
-ACMD:[MAX_ADMIN_LEVEL]createdealer(playerid, const params[])
+ADMIN_COMMAND:[MAX_ADMIN_LEVEL]createdealer(playerid, const params[])
 {
     extract params -> new skin, string: name[25]; else {
         return usage(playerid, "/createdealer [skin] [name]");
