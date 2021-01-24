@@ -19,7 +19,9 @@
 		"emmett-white/survive-time",
 		"Mergevos/samp-vehicle-framework",
 		"Southclaws/pawn-chrono",
-		"katursis/Pawn.RakNet"
+		"katursis/Pawn.RakNet",
+		"Southclaws/progress2",
+		"emmett-white/samp-players-count"
 	],
 	"local": true,
 	"runtime": {
@@ -84,6 +86,7 @@
 				"gamemodes/core/player/report",
 				"gamemodes/core/player/ui",
 				"gamemodes/core/player/ui/help",
+				"gamemodes/core/player/ui/register",
 				"gamemodes/core/player/vehicle",
 				"gamemodes/core/player/spawn",
 				"gamemodes/core/systems/dealer",

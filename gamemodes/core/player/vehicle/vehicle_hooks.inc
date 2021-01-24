@@ -27,15 +27,15 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
         );
     }
 
-    // Vehicle lock
+    // Vehicle doors lock
     if (PRESSED(KEY_NO) && IsPlayerInAnyVehicle(playerid)) {
-        Vehicle_SetLockState(GetPlayerVehicleID(playerid),
-            Vehicle_GetLockState(GetPlayerVehicleID(playerid)) ? (E_LOCK_STATE_OFF) : (E_LOCK_STATE_ON)
+        Vehicle_SetDoorState(GetPlayerVehicleID(playerid),
+            Vehicle_GetDoorState(GetPlayerVehicleID(playerid)) ? (E_DOOR_STATE_OFF) : (E_DOOR_STATE_ON)
         );
 
         UI_ShowPlayerHelpMsg(
             playerid, "~w~You_have_%s_~w~the_vehice.",
-            Vehicle_GetLockState(GetPlayerVehicleID(playerid)) ? ("~r~locked") : ("~g~unlocked")
+            Vehicle_GetDoorState(GetPlayerVehicleID(playerid)) ? ("~r~locked") : ("~g~unlocked")
         );
     }
 
@@ -44,14 +44,14 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 hook OnPlayerEnterVehicle(playerid, vehicleid, bool:ispassenger)
 {
-    Vehicle_SetLockState(vehicleid, E_LOCK_STATE_OFF);
+    Vehicle_SetDoorState(vehicleid, E_DOOR_STATE_OFF);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
 
 hook OnPlayerExitVehicle(playerid, vehicleid)
 {
-    Vehicle_SetLockState(vehicleid, E_LOCK_STATE_OFF);
+    Vehicle_SetDoorState(vehicleid, E_DOOR_STATE_OFF);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
