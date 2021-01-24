@@ -61,3 +61,15 @@ PLAYER_COMMAND:dealer(playerid, const params[])
 
     return 1;
 }
+
+PLAYER_COMMAND:usedrug(playerid, const params[])
+{
+    if (!Player_GetDrugs(playerid) && Player_GetDrugs(playerid) < 10) {
+        return err(playerid, "You don't have drugs!");
+    }
+
+    Player_SetDrugs(playerid, (Player_GetDrugs(playerid) - 10));
+    Player_DrugEffects(playerid);
+
+    return 1;
+}

@@ -111,8 +111,9 @@ CheckPlayerAccExists(const playerid)
         SetPlayerScore(playerid, Player_GetScore(playerid));
         GivePlayerMoney(playerid, Player_GetMoney(playerid));
 
-        defer spawn_player(playerid);
         GameTextForPlayer(playerid, "~y~CREATING ACCOUNT...", 3000, 3);
+        task_await(Task: BindToPlayer(task_ms(3000), playerid));
+        Player_SetSpawn(playerid);
     }
 
     return 1;
@@ -140,8 +141,9 @@ Auth_DoLogin(const playerid)
             SetPlayerScore(playerid, Player_GetScore(playerid));
             GivePlayerMoney(playerid, Player_GetMoney(playerid));
 
-            defer spawn_player(playerid);
             GameTextForPlayer(playerid, "~y~LOADING ACCOUNT...", 3000, 3);
+            task_await(Task: BindToPlayer(task_ms(3000), playerid));
+            Player_SetSpawn(playerid);
         }
 
         else {

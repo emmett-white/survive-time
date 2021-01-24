@@ -113,9 +113,35 @@ public OnGameModeInit()
 	return 1;
 }
 
+// * JIT callback *
 forward OnJITCompile();
 public OnJITCompile()
 {
 	printf("OnJITCompile->JIT is %spresent", (IsJITPresent() ? ("not ") : ("")));
 	return 1;
+}
+
+// * PawnPlus callback & function(task) *
+forward Bind_OnPlayerDisconnect(CallbackHandler: self, Handle: task_handle, Task: task, const orig_playerid, const playerid);
+public Bind_OnPlayerDisconnect(CallbackHandler: self, Handle: task_handle, Task: task, const orig_playerid, const playerid)
+{
+    if(orig_playerid == playerid) {
+        pawn_unregister_callback(self);
+        handle_release(task_handle);
+
+        if(handle_linked(task_handle)) {
+            task_delete(task);
+        }
+    }
+}
+
+BindToPlayer(Task: task, const playerid)
+{
+    new
+		Handle: handle = handle_new(_:task, .tag_id = tagof(task));
+		
+    handle_acquire(handle);
+    pawn_register_callback(#OnPlayerDisconnect, #Bind_OnPlayerDisconnect, _, "eddd", _:handle, _:task, playerid);
+    
+    return _:task;
 }

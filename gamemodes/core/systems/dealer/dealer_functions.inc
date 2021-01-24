@@ -94,3 +94,25 @@ Dealer_Nearby(const playerid)
 
     return 0;
 }
+
+Player_DrugEffects(const playerid, bool: status = true)
+{
+    if (!status) {
+        SetPlayerWeather(playerid, 1);
+
+        return 1;
+    }
+
+    SetPlayerWeather(playerid, -1337);
+    task_await(Task: BindToPlayer(task_ms(2000), playerid));
+
+    SetPlayerWeather(playerid, 44);
+    task_await(Task: BindToPlayer(task_ms(2000), playerid));
+
+    SetPlayerWeather(playerid, 21);
+
+    task_await(Task: BindToPlayer(task_ms(5000), playerid));
+    Player_DrugEffects(playerid, false);
+
+    return 1;
+}

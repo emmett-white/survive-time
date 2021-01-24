@@ -66,3 +66,17 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]createdealer(playerid, const params[])
 
     return 1;
 }
+
+ADMIN_COMMAND:[MAX_ADMIN_LEVEL]givedrugs(playerid, const params[])
+{
+    if (isnull(params)) {
+        return usage(playerid, "/givedrugs [targetid]");
+    }
+
+    Player_SetDrugs(strval(params), (Player_GetDrugs(strval(params)) + 10));
+
+    fmt_info(strval(params), "Admin %s gave you 10g of drugs. Drugs: %d", ReturnPlayerName(playerid), Player_GetDrugs(strval(params)));
+    fmt_info(playerid, "You gave 10g of drugs to %s. Drugs: %d", ReturnPlayerName(strval(params)), Player_GetDrugs(strval(params)));
+
+    return 1;
+}
