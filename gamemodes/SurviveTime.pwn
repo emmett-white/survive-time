@@ -74,6 +74,7 @@ const
 #include <report>
 #include <ui>
 #include <help>
+#include <register>
 #include <vehicle>
 #include <animations>
 #include <admin>
