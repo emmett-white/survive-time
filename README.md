@@ -33,7 +33,10 @@ Happy Pawning!
 Simply install to your project:
 
 ```bash
-sampctl package install emmett-white/survive-time
+mkdir project && cd project
+git clone https://github.com/emmett-white/survive-time
+cd survive-time
+sampctl p ensure && sampctl p build
 ```
 
 ## Contributing & Style Guide
