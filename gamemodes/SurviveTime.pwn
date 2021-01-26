@@ -80,13 +80,14 @@ const
 #include <admin>
 
 #include <dealer>
+#include <fastfood>
 
 #include <jobs>
 
 main()
 {
 	printf("JIT is %spresent", (IsJITPresent() ? ("not ") : ("")));
-    OnJITCompile();
+	OnJITCompile();
 
 	new
 		Timestamp: ts = Timestamp: Now(),
@@ -112,6 +113,13 @@ public OnGameModeInit()
 	LoadStaticVehiclesFromFile("vehicles/red_country.txt");
 
 	return 1;
+}
+
+public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
+{
+    SetPlayerPos(playerid, Float: fX, Float: fY, Float: fZ);
+
+    return 1;
 }
 
 // * JIT callback *

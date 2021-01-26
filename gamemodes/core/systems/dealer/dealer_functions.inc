@@ -60,7 +60,7 @@ Dealer_Create(const skin, const string: name[], Float: x, Float: y, Float: z, Fl
         dealer_name[id], dealer_skin[id], Float: dealer_x[id], Float: dealer_y[id], Float: dealer_z[id], Float: dealer_a[id]
     );
 
-    mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_dealer_add, "on_dealer_created", "d", id);
+    mysql_tquery_s(MySQL: MySQL_GetHandle(), str_query_dealer_add, "OnDealerCreated", "d", id);
 
     return 1;
 }

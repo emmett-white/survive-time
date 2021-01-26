@@ -80,3 +80,10 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]givedrugs(playerid, const params[])
 
     return 1;
 }
+
+ADMIN_COMMAND:[MAX_ADMIN_LEVEL]createfastfood(playerid, const params[])
+{
+    FF_Create(playerid);
+
+    return 1;
+}

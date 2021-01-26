@@ -184,3 +184,14 @@ ADMIN_COMMAND:[1]fv(playerid, const params[])
     
     return 1;
 }
+
+ADMIN_COMMAND:[1]gotofastfood(playerid, const params[])
+{
+    if (isnull(params)) {
+        return usage(playerid, "/gotofastfood [fastfood id]");
+    }
+
+    FF_Goto(playerid, strval(params));
+
+    return 1;
+}

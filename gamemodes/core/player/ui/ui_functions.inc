@@ -43,7 +43,7 @@ UI_CreatePlayerTextDraws(const playerid, bool: status = true)
     PlayerTextDrawFont(playerid, ui_textdraw[playerid][2], 4);
     PlayerTextDrawSetProportional(playerid, ui_textdraw[playerid][2], 0);
 
-    ui_textdraw[playerid][3] = CreatePlayerTextDraw(playerid, 585.700256, 428.933441, "00:00:00");
+    ui_textdraw[playerid][3] = CreatePlayerTextDraw(playerid, 585.700256, 428.933441, "________");
     PlayerTextDrawLetterSize(playerid, ui_textdraw[playerid][3], 0.228799, 1.017599);
     PlayerTextDrawTextSize(playerid, ui_textdraw[playerid][3], 0.000000, 295.000000);
     PlayerTextDrawAlignment(playerid, ui_textdraw[playerid][3], 2);
