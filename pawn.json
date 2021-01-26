@@ -92,7 +92,8 @@
 				"gamemodes/core/systems/dealer",
 				"gamemodes/core/player/animations",
 				"gamemodes/core/jobs",
-				"gamemodes/core/jobs/bus"
+				"gamemodes/core/jobs/bus",
+				"gamemodes/core/systems/fastfood"
 			],
 			"compiler": {}
 		}
