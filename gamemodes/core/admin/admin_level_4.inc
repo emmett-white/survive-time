@@ -1,4 +1,4 @@
-ADMIN_COMMAND:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_4 && !IsPlayerAdmin(playerid)]setadmin(playerid, const params[])
 {
     extract params -> new targetid, level, code; else {
         return usage(playerid, "/setadmin [targetid] [level] [code]");

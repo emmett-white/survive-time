@@ -5,7 +5,7 @@ enum {
     e_ADMIN_LEVEL_1 = 1,
     e_ADMIN_LEVEL_2,
     e_ADMIN_LEVEL_3,
-    e_ADMIN_LEVEL_4 = MAX_ADMIN_LEVEL
+    e_ADMIN_LEVEL_4
 };
 
 /**
@@ -15,7 +15,7 @@ enum {
 */
 SetPlayerAdminLevel(const playerid, const adminid, level = 0, code)
 {
-    if (!(0 <= level < 5)) {
+    if (!(0 <= level <= MAX_ADMIN_LEVEL)) {
         return err(adminid, "* Error: "WHITE"Admin level can't be less than 0 and greater than 4!");
     }
 
