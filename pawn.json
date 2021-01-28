@@ -17,11 +17,11 @@
 		"maddinat0r/sscanf",
 		"samp-incognito/samp-streamer-plugin",
 		"emmett-white/survive-time",
-		"Mergevos/samp-vehicle-framework",
 		"Southclaws/pawn-chrono",
 		"katursis/Pawn.RakNet",
 		"Southclaws/progress2",
-		"emmett-white/samp-players-count"
+		"emmett-white/samp-players-count",
+		"Mergevos/samp-vehicle-framework@dev"
 	],
 	"local": true,
 	"runtime": {
