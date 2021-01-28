@@ -1,4 +1,4 @@
-ADMIN_COMMAND:[2]warn(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_2]warn(playerid, const params[])
 {
     extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else {
         return usage(playerid, "/warn [targetid] [reason]");
@@ -25,10 +25,14 @@ ADMIN_COMMAND:[2]warn(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[2]goto(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_2]goto(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/goto [targetid]");
+    }
+
+    if (!IsPlayerConnected(strval(params))) {
+        return 0;
     }
 
     static
@@ -45,10 +49,14 @@ ADMIN_COMMAND:[2]goto(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[2]get(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_2]get(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/get [targetid]");
+    }
+
+    if (!IsPlayerConnected(strval(params))) {
+        return 0;
     }
 
     static
@@ -61,6 +69,22 @@ ADMIN_COMMAND:[2]get(playerid, const params[])
 
     fmt_info(strval(params), "Admin %s teleported you to him.", ReturnPlayerName(playerid));
     fmt_info(strval(params), "You've teleported player %s to you.", ReturnPlayerName(strval(params)));
+
+    return 1;
+}
+
+ADMIN_COMMAND:[e_ADMIN_LEVEL_2]setskin(playerid, const params[])
+{
+    extract params -> new targetid, skin = 26; else {
+        return usage(playerid, "/setskin [targetid] [skin (default = 26)]");
+    }
+
+    if (!(1 <= skin <= 311)) {
+        return err(playerid, "Invalid skin ID!");
+    }
+
+    Player_SetSkin(targetid, skin);
+    SetPlayerSkin(playerid, Player_GetSkin(playerid));
 
     return 1;
 }

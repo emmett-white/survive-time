@@ -1,7 +1,7 @@
 static
     BitArray: VEHICLE_SPAWNED<MAX_PLAYERS>;
 
-ADMIN_COMMAND:[1]ban(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]ban(playerid, const params[])
 {
     extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else {
         return usage(playerid, "/ban [targetid] [reason]");
@@ -12,7 +12,7 @@ ADMIN_COMMAND:[1]ban(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]unban(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]unban(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/unban [name]");
@@ -23,7 +23,7 @@ ADMIN_COMMAND:[1]unban(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]kick(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]kick(playerid, const params[])
 {
     extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else {
         return usage(playerid, "/kick [targetid] [reason]");
@@ -45,7 +45,7 @@ ADMIN_COMMAND:[1]kick(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]cc(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]cc(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/cc [line(s)]");
@@ -60,7 +60,7 @@ ADMIN_COMMAND:[1]cc(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]mute(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]mute(playerid, const params[])
 {
     extract params -> new targetid, string: reason[MAX_REASON_TEXT], minutes; else {
         return usage(playerid, "/mute [targetid] [reason] [minutes]");
@@ -71,10 +71,14 @@ ADMIN_COMMAND:[1]mute(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]unmute(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]unmute(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/unmute [targetid]");
+    }
+
+    if (!IsPlayerConnected(strval(params))) {
+        return 0;
     }
 
     UnMutePlayer(playerid, strval(params));
@@ -82,7 +86,7 @@ ADMIN_COMMAND:[1]unmute(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]veh(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]veh(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/veh [vehicle id (400-611)]");
@@ -114,7 +118,7 @@ ADMIN_COMMAND:[1]veh(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]pm(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]pm(playerid, const params[])
 {
     extract params -> new targetid, string: text[MAX_TEXT_MESSAGE]; else {
         return usage(playerid, "/pm [targetid] [text]");
@@ -126,7 +130,7 @@ ADMIN_COMMAND:[1]pm(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]a(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]a(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/a [text]");
@@ -141,7 +145,7 @@ ADMIN_COMMAND:[1]a(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]kill(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]kill(playerid, const params[])
 {
     extract params -> new targetid, string: reason[MAX_REASON_TEXT]; else {
         return usage(playerid, "/kill [targetid] [reason]");
@@ -155,7 +159,7 @@ ADMIN_COMMAND:[1]kill(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]gotodealer(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]gotodealer(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/gotodealer [dealer id]");
@@ -166,7 +170,7 @@ ADMIN_COMMAND:[1]gotodealer(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]pos(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]pos(playerid, const params[])
 {
 	extract params -> new Float: x, Float: y, Float: z; else {
         return usage(playerid, "/pos [x] [y] [z]");
@@ -177,7 +181,7 @@ ADMIN_COMMAND:[1]pos(playerid, const params[])
 	return 1;
 }
 
-ADMIN_COMMAND:[1]fv(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]fv(playerid, const params[])
 {
     RepairVehicle(GetPlayerVehicleID(playerid));
     SetVehicleHealth(GetPlayerVehicleID(playerid), Float: 0x4479c000);
@@ -185,13 +189,49 @@ ADMIN_COMMAND:[1]fv(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[1]gotofastfood(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]gotofastfood(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/gotofastfood [fastfood id]");
     }
 
     FF_Goto(playerid, strval(params));
+
+    return 1;
+}
+
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]freeze(playerid, const params[])
+{
+    if (isnull(params)) {
+        return usage(playerid, "/freeze [targetid]");
+    }
+
+    if (!IsPlayerConnected(strval(params))) {
+        return 0;
+    }
+
+    TogglePlayerControllable(strval(params), 0);
+
+    fmt_info(playerid, "You froze the player %s.", ReturnPlayerName(strval(params)));
+    fmt_info(strval(params), "Admin %s froze you.", ReturnPlayerName(playerid));
+
+    return 1;
+}
+
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]unfreeze(playerid, const params[])
+{
+    if (isnull(params)) {
+        return usage(playerid, "/unfreeze [targetid]");
+    }
+
+    if (!IsPlayerConnected(strval(params))) {
+        return 0;
+    }
+
+    TogglePlayerControllable(strval(params), 1);
+
+    fmt_info(playerid, "You un-froze the player %s.", ReturnPlayerName(strval(params)));
+    fmt_info(strval(params), "Admin %s un-froze you.", ReturnPlayerName(playerid));
 
     return 1;
 }

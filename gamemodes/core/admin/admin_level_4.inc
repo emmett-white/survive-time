@@ -9,7 +9,7 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL && !IsPlayerAdmin(playerid)]setadmin(playerid, co
     return 1;
 }
 
-ADMIN_COMMAND:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_4]givemoney(playerid, const params[])
 {
     extract params -> new targetid, amt; else {
         return usage(playerid, "/givemoney [targetid] [amount]");
@@ -28,7 +28,7 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]givemoney(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_4]setlevel(playerid, const params[])
 {
     extract params -> new targetid, level; else {
         return usage(playerid, "/setlevel [targetid] [level]");
@@ -47,7 +47,7 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]setlevel(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[MAX_ADMIN_LEVEL]createdealer(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_4]createdealer(playerid, const params[])
 {
     extract params -> new skin, string: name[25]; else {
         return usage(playerid, "/createdealer [skin] [name]");
@@ -67,10 +67,14 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]createdealer(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[MAX_ADMIN_LEVEL]givedrugs(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_4]givedrugs(playerid, const params[])
 {
     if (isnull(params)) {
         return usage(playerid, "/givedrugs [targetid]");
+    }
+
+    if (!IsPlayerConnected(strval(params))) {
+        return 0;
     }
 
     Player_SetDrugs(strval(params), (Player_GetDrugs(strval(params)) + 10));
@@ -81,7 +85,7 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]givedrugs(playerid, const params[])
     return 1;
 }
 
-ADMIN_COMMAND:[MAX_ADMIN_LEVEL]createfastfood(playerid, const params[])
+ADMIN_COMMAND:[e_ADMIN_LEVEL_4]createfastfood(playerid, const params[])
 {
     FF_Create(playerid);
 

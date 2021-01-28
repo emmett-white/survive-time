@@ -1,6 +1,13 @@
 // * Variable *
 const MAX_ADMIN_LEVEL = (4);
 
+enum {
+    e_ADMIN_LEVEL_1 = 1,
+    e_ADMIN_LEVEL_2,
+    e_ADMIN_LEVEL_3,
+    e_ADMIN_LEVEL_4 = MAX_ADMIN_LEVEL
+};
+
 /**
   * <param name="playerid">The player to whom the admin will be assigned/removed</param>
   * <param name="adminid">The admin who assigns/removes admin to playerid</param>
