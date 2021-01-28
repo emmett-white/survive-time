@@ -1,5 +1,5 @@
 // * Variable *
-const MAX_ADMIN_LEVEL = (4);
+const MAX_ADMIN_LEVEL = 4;
 
 enum {
     e_ADMIN_LEVEL_1 = 1,
