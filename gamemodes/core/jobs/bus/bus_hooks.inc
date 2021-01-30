@@ -2,8 +2,8 @@
 
 static
     tmpobjid,
-
     Bus_Vehicle[4],
+
     Text3D: Bus_Label[4];
 
 hook OnGameModeInit()
@@ -49,14 +49,10 @@ hook OnGameModeInit()
     tmpobjid = CreateDynamicObject(7914, 1241.601684, -1841.872680, 14.711424, 0.000000, 0.000000, -0.000000, -1, -1, -1, 300.00, 300.00); 
     SetDynamicObjectMaterialText(tmpobjid, 0, "{FFFFFF}BUS STATION", 80, "Ariel", 20, 1, 0x00000000, 0x00000000, 1);
     
-    // opened gate1 CreateDynamicObject(980, 1213.678710, -1841.641967, 14.093055, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
     tmpobjid = CreateDynamicObject(19123, 1219.823242, -1841.613525, 13.061433, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
     tmpobjid = CreateDynamicObject(19123, 1207.512939, -1841.613525, 13.061433, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
     tmpobjid = CreateDynamicObject(19123, 1263.723266, -1841.613525, 13.061433, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
     tmpobjid = CreateDynamicObject(19123, 1276.243164, -1841.613525, 13.061433, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
-    // opened gate2 CreateDynamicObject(980, 1270.098388, -1841.641967, 14.093055, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
-    // closed gate1 CreateDynamicObject(980, 1270.098388, -1841.641967, 9.513043, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
-    // closed gate2 CreateDynamicObject(980, 1213.678710, -1841.641967, 9.553050, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00);
 
     // Vehicles
     Bus_Vehicle[0] = AddStaticVehicleEx(431, 1280.0828000, -1799.9475000, 13.3989000, 180.0000000, -1, -1, 10000);
@@ -71,6 +67,9 @@ hook OnGameModeInit()
             INVALID_PLAYER_ID, Bus_Vehicle[i]
         );
     }
+
+    CreateDynamicPickup(1210, 1, Float: 1222.0521, Float: -1812.2341, Float: 16.5938);
+    CreateDynamicPickup(1275, 1, Float: 1216.5745, Float: -1812.1322, Float: 16.5938);
 
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
@@ -119,10 +118,3 @@ Bus_ValidVeh(vehid)
 
     return 0;
 }
-
-// PLAYER_COMMAND:test(playerid, const params[])
-// {
-//     Player_SetJob(playerid, _:E_PLAYER_JOB_BUS);
-
-//     return 1;
-// }
