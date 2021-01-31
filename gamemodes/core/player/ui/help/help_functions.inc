@@ -1,7 +1,9 @@
 static
     PlayerText: help_msg_textdraw[MAX_PLAYERS] = {PlayerText: INVALID_TEXT_DRAW, ...};
 
-// * Functions *
+/**
+ * Functions
+ */
 UI_CreatePlayerHelpMsg(const playerid, bool: status = true)
 {
     if (!status) {
@@ -36,7 +38,9 @@ UI_ShowPlayerHelpMsg(const playerid, const string: fmt[], va_args<>)
     return 1;
 }
 
-// * Hide messae timer *
+/**
+ * Hide message timer
+ */
 timer hide_help_msg[2000](playerid)
 {
     UI_CreatePlayerHelpMsg(playerid, false);

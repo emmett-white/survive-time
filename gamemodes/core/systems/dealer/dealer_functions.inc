@@ -1,6 +1,8 @@
 const MAX_DEALERS = 50;
 
-// * Variables *
+/**
+ * Variables
+ */
 new
     Iterator: Iter_Dealers<MAX_DEALERS>,
     Text3D: dealer_label[MAX_DEALERS],

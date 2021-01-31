@@ -1,7 +1,9 @@
 static
     char_drugs[MAX_PLAYERS];
 
-// * Get/Set functions *
+/**
+ * Get/Set functions
+ */
 Player_SetDrugs(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {

@@ -1,9 +1,8 @@
 /**
-  * TODO: /bus command (checkpoints etc.)
+  * TODO: ...
+  * TODO: ...
 */
 
-// * SA-MP stdlib *
-// #include <openmp>
 #include <a_samp>
 
 #undef MAX_PLAYERS
@@ -11,29 +10,18 @@
 #undef MAX_ACTORS
 #undef MAX_VEHICLES
 
+/**
+ * Constants
+ */
 const
 	MAX_PLAYERS = 10,
 	MAX_PLAYER_NAME = 25,
 	MAX_ACTORS = 20,
 	MAX_VEHICLES = 500;
 
-// * JIT *
-#include <jit>
-
-// * SA-MP util *
-#include <string>
-
-// * MySQL *
-#include <a_mysql>
-#include <env>
-
-// * Crashdetect *
-#include <crashdetect>
-
-// * Objects *
-#include <streamer>
-
-// * YSI-Includes *
+/**
+ * YSI
+ */
 #define YSI_NO_HEAP_MALLOC
 #define YSI_NO_VERSION_CHECK
 #define YSI_NO_MODE_CACHE
@@ -43,27 +31,34 @@ const
 #include <YSI_Server\y_colours>
 #include <YSI_Data\y_bit>
 
+#include <jit>
+#include <string>
+#include <a_mysql>
+#include <env>
+#include <crashdetect>
+#include <streamer>
 #include <sscanf2>
-
-// * PawnPlus *
-
 #include <PawnPlus>
 #include <pp-mysql>
-
-// * Dialogs *
 #include <async-dialogs>
-
-// * Vehicle framework *
 #include <vehicle_framework>
-
-// * pawn-chrono *
 #include <chrono>
 
-// * Modules *
+/**
+ * Database
+ */
 #include <db_init>
+
+/**
+ * Command process, cfgs etc.
+ */
 #include <cmd_process>
 #include <shortcuts>
 #include <vehicles>
+
+/**
+ * Character
+ */
 #include <ban>
 #include <spawn>
 #include <accounts>
@@ -71,16 +66,28 @@ const
 #include <mute>
 #include <chat>
 #include <report>
+
+/**
+ * UI
+ */
 #include <ui>
 #include <help>
 #include <register>
+#include <speedometer>
+
+/**
+ * Vehicles
+ */
 #include <vehicle>
+
 #include <animations>
 #include <admin>
 
+/**
+ * Systems
+ */
 #include <dealer>
 #include <fastfood>
-
 #include <jobs>
 
 main()
@@ -121,7 +128,9 @@ public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
     return 1;
 }
 
-// * JIT callback *
+/**
+ * JIT callback
+ */
 forward OnJITCompile();
 public OnJITCompile()
 {
@@ -129,7 +138,9 @@ public OnJITCompile()
 	return 1;
 }
 
-// * PawnPlus callback & function(task) *
+/**
+ * PawnPlus callback & fucntion (task)
+ */
 forward Bind_OnPlayerDisconnect(CallbackHandler: self, Handle: task_handle, Task: task, const orig_playerid, const playerid);
 public Bind_OnPlayerDisconnect(CallbackHandler: self, Handle: task_handle, Task: task, const orig_playerid, const playerid)
 {

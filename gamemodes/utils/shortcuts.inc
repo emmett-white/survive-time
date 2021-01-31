@@ -6,7 +6,9 @@
 #define fmt_err(%0,%1,%2) va_SendClientMessage(%0, X11_ORANGE, "* Error: "WHITE""%1,%2)
 #define fmt_info(%0,%1,%2) va_SendClientMessage(%0, X11_ORANGE, "* Info: "WHITE""%1,%2)
 
-// * Configs *
+/**
+ * Configs
+ */
 #if defined MAX_WARNS
     #undef MAX_WARNS
 #else

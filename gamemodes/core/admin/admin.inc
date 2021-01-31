@@ -2,7 +2,9 @@ static
     char_admin[MAX_PLAYERS],
     char_admin_code[MAX_PLAYERS];
 
-// * Functions *
+/**
+ * Functions
+ */
 SendMessageToAdmins(colour, const string: text[], va_args<>)
 {
     foreach (new i: Player) {
@@ -14,7 +16,9 @@ SendMessageToAdmins(colour, const string: text[], va_args<>)
     return 1;
 }
 
-// * Set functions *
+/**
+ * Set functions
+ */
 Admin_Set(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
@@ -61,7 +65,9 @@ Admin_SetCode(const playerid, const int)
     return 1;
 }
 
-// * Get functions *
+/**
+ * Get functions
+ */
 Admin_GetLevel(const playerid)
 {
     return char_admin[playerid];

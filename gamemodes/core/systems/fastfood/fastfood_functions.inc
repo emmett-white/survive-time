@@ -2,7 +2,9 @@ const
     MAX_FASTFOODS = 100,
     FF_OBJECT_ID  = 1571;
 
-// * Variables *
+/**
+ * Variables
+ */
 new
     Iterator: Iter_Fastfoods<MAX_FASTFOODS>,
     Text3D: ff_label[MAX_FASTFOODS],
@@ -15,7 +17,9 @@ new
     ff_id[MAX_FASTFOODS],
     ff_object[MAX_FASTFOODS];
 
-// * Functions *
+/**
+ * Functions
+ */
 FF_Create(const playerid)
 {
     new

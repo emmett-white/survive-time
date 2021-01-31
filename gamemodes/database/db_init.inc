@@ -1,10 +1,11 @@
 #include <YSI_Coding\y_hooks>
 
-// * Variables *
 static
     MySQL: db_handle;
 
-// * Hooks *
+/**
+ * Hooks
+ */
 hook OnGameModeInit()
 {
     DB_CreateConnection();
@@ -22,7 +23,9 @@ hook OnGameModeExit()
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
 
-// * Functions *
+/**
+ * Functions
+ */
 static DB_CreateConnection()
 {
     static

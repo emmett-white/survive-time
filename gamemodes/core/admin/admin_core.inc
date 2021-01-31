@@ -1,4 +1,3 @@
-// * Variable *
 const MAX_ADMIN_LEVEL = 4;
 
 enum {

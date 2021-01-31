@@ -1,6 +1,8 @@
 #include <YSI_Coding\y_hooks>
 
-// * Hooks *
+/**
+ * Hooks
+ */
 hook OnPlayerConnect(playerid)
 {
 	CheckPlayerBanStatus(playerid);

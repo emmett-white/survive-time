@@ -2,7 +2,6 @@ static
     PlayerText: ui_textdraw[MAX_PLAYERS][14] = {PlayerText: INVALID_TEXT_DRAW, ...},
     ui_status[MAX_PLAYERS];
 
-// * Functions *
 UI_CreatePlayerTextDraws(const playerid, bool: status = true)
 {
     if (!status) {
@@ -184,7 +183,9 @@ UI_UpdatePlayerTextDraw(const playerid, value)
     return 1;
 }
 
-// * Get/Set functions *
+/**
+ * Get/Set functions
+ */
 Player_SetUIStatus(const playerid, const int)
 {
     ui_status[playerid] = int;
@@ -197,13 +198,17 @@ Player_GetUIStatus(const playerid)
     return ui_status[playerid];
 }
 
-// * Clock timer *
+/**
+ * Clock timer
+ */
 ptask clock_timer[1000](playerid)
 {
-    new
-        Timestamp: ts = Timestamp: Now(),
-        ts_format[12];
+    if (Player_GetUIStatus(playerid)) {
+        new
+            Timestamp: ts = Timestamp: Now(),
+            ts_format[12];
 
-    TimeFormat(Timestamp: ts, ISO6801_TIME, ts_format, sizeof ts_format);
-    PlayerTextDrawSetString(playerid, PlayerText: ui_textdraw[playerid][3], ts_format);
+        TimeFormat(Timestamp: ts, ISO6801_TIME, ts_format, sizeof ts_format);
+        PlayerTextDrawSetString(playerid, PlayerText: ui_textdraw[playerid][3], ts_format);
+    }
 }

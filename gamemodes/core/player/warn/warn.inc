@@ -1,8 +1,9 @@
-// * Variables *
 static
     char_warn_num[MAX_PLAYERS] = 0;
 
-// * Functions *
+/**
+ * Get/Set functions
+ */
 Player_SetWarns(const playerid, const warns)
 {
     if (!IsPlayerConnected(playerid)) {

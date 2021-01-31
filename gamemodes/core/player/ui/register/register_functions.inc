@@ -1,8 +1,6 @@
-// * Variables *
 static
     PlayerText: ui_register[MAX_PLAYERS][12] = {PlayerText: INVALID_TEXT_DRAW, ...};
 
-// * Functions
 UI_CreateRegisterTextDraws(const playerid, bool: status = true)
 {
     if (!status) {

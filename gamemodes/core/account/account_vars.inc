@@ -1,4 +1,6 @@
-// * Variables *
+/**
+ * Variables
+ */
 new
     account_id[MAX_PLAYERS],
     account_password[MAX_PLAYERS][64],
@@ -10,7 +12,9 @@ new
     char_money[MAX_PLAYERS],
     char_skin[MAX_PLAYERS];
 
-// * Set functions *
+/**
+ * Set functions
+ */
 Player_SetScore(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
@@ -84,7 +88,9 @@ Player_SetSkin(const playerid, const int)
     return 1;
 }
 
-// * Get functions *
+/**
+ * Get functions
+ */
 Player_GetScore(const playerid)
 {
     return char_score[playerid];

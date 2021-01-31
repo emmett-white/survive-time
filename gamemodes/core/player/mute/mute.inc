@@ -2,7 +2,9 @@ static
     char_muted[MAX_PLAYERS],
     char_muted_mins[MAX_PLAYERS];
 
-// * Set functions *
+/**
+ * Set functions
+ */
 Player_SetMuted(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
@@ -49,7 +51,9 @@ Player_SetMutedMins(const playerid, const int)
     return 1;
 }
 
-// * Get functions *
+/**
+ * Get functions
+ */
 Player_GetMuted(const playerid)
 {
     return char_muted[playerid];
