@@ -91,3 +91,47 @@ ADMIN_COMMAND:[e_ADMIN_LEVEL_4]createfastfood(playerid, const params[])
 
     return 1;
 }
+
+ADMIN_COMMAND:[e_ADMIN_LEVEL_4]rewards(playerid, const params[])
+{
+    if (Iter_Count(Player) < 10) {
+        return err(playerid, "There must be a min 10 players on the server to award prizes.");
+    }
+
+    task_yield(1);
+
+    static
+        dialog_rewards[e_DIALOG_RESPONSE_INFO];
+
+    task_await_arr(
+        Task: ShowPlayerAsyncDialog(
+            playerid, DIALOG_STYLE_LIST,
+            "Rewards", "1+ level\n$100+",
+            "Select", "Cancel"
+        ), dialog_rewards
+    );
+
+    if (dialog_rewards[E_DIALOG_RESPONSE_Response]) {
+        switch (dialog_rewards[E_DIALOG_RESPONSE_Listitem]) {
+            case 0: {
+                foreach (new i: Player) {
+                    Player_SetScore(i, (Player_GetScore(i) + 1));
+                    SetPlayerScore(i, Player_GetScore(i));
+                }
+
+                SendClientMessageToAll(-1, "* Reward: Score: +1!");
+            }
+
+            case 1: {
+                foreach (new i: Player) {
+                    Player_SetMoney(i, (Player_GetMoney(i) + 100));
+                    GivePlayerMoney(i, 100);
+                }
+
+                SendClientMessageToAll(-1, "* Reward: Money: +$100!");
+            }
+        }
+    }
+
+    return 1;
+}
