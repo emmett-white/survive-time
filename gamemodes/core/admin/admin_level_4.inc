@@ -94,9 +94,9 @@ ADMIN_COMMAND:[e_ADMIN_LEVEL_4]createfastfood(playerid, const params[])
 
 ADMIN_COMMAND:[e_ADMIN_LEVEL_4]rewards(playerid, const params[])
 {
-    if (Iter_Count(Player) < 10) {
-        return err(playerid, "There must be a min 10 players on the server to award prizes.");
-    }
+    // if (Iter_Count(Player) < 10) {
+    //     return err(playerid, "There must be a min 10 players on the server to award prizes.");
+    // }
 
     task_yield(1);
 
@@ -114,21 +114,51 @@ ADMIN_COMMAND:[e_ADMIN_LEVEL_4]rewards(playerid, const params[])
     if (dialog_rewards[E_DIALOG_RESPONSE_Response]) {
         switch (dialog_rewards[E_DIALOG_RESPONSE_Listitem]) {
             case 0: {
-                foreach (new i: Player) {
-                    Player_SetScore(i, (Player_GetScore(i) + 1));
-                    SetPlayerScore(i, Player_GetScore(i));
-                }
+                task_yield(1);
 
-                SendClientMessageToAll(-1, "* Reward: Score: +1!");
+                static
+                    dialog_inputlvl[e_DIALOG_RESPONSE_INFO];
+
+                task_await_arr(
+                    Task: ShowPlayerAsyncDialog(
+                        playerid, DIALOG_STYLE_INPUT,
+                        "Score rewards", "Input value:",
+                        "Submit", "Cancel"
+                    ), dialog_inputlvl
+                );
+
+                if (dialog_inputlvl[E_DIALOG_RESPONSE_Response]) {
+                    foreach (new i: Player) {
+                        Player_SetScore(i, (Player_GetScore(i) + strval(dialog_inputlvl[E_DIALOG_RESPONSE_InputText])));
+                        SetPlayerScore(i, strval(dialog_inputlvl[E_DIALOG_RESPONSE_InputText]));
+
+                        fmt_info(i, "Reward: +%d score.", strval(dialog_inputlvl[E_DIALOG_RESPONSE_InputText]));
+                    }
+                }
             }
 
             case 1: {
-                foreach (new i: Player) {
-                    Player_SetMoney(i, (Player_GetMoney(i) + 100));
-                    GivePlayerMoney(i, 100);
-                }
+                task_yield(1);
 
-                SendClientMessageToAll(-1, "* Reward: Money: +$100!");
+                static
+                    dialog_inputmoney[e_DIALOG_RESPONSE_INFO];
+
+                task_await_arr(
+                    Task: ShowPlayerAsyncDialog(
+                        playerid, DIALOG_STYLE_INPUT,
+                        "Money rewards", "Input value:",
+                        "Submit", "Cancel"
+                    ), dialog_inputmoney
+                );
+
+                if (dialog_inputmoney[E_DIALOG_RESPONSE_Response]) {
+                    foreach (new i: Player) {
+                        Player_SetMoney(i, (Player_GetMoney(i) + strval(dialog_inputmoney[E_DIALOG_RESPONSE_InputText])));
+                        GivePlayerMoney(i, strval(dialog_inputmoney[E_DIALOG_RESPONSE_InputText]));
+
+                        fmt_info(i, "Reward: +$%d.", strval(dialog_inputmoney[E_DIALOG_RESPONSE_InputText]));
+                    }
+                }
             }
         }
     }

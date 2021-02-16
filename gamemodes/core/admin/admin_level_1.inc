@@ -183,6 +183,10 @@ ADMIN_COMMAND:[e_ADMIN_LEVEL_1]pos(playerid, const params[])
 
 ADMIN_COMMAND:[e_ADMIN_LEVEL_1]fv(playerid, const params[])
 {
+    if (!IsPlayerInAnyVehicle(playerid)) {
+        return 0;
+    }
+    
     RepairVehicle(GetPlayerVehicleID(playerid));
     SetVehicleHealth(GetPlayerVehicleID(playerid), Float: 0x4479c000);
     
