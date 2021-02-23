@@ -4,7 +4,7 @@
   * <param name="reason">the reason why player will be muted</param>
   * <param name="minutes">the time how long the player will be muted</param>
 */
-MutePlayer(const playerid, const targetid, const string: reason[], minutes)
+stock MutePlayer(const playerid, const targetid, const string: reason[], minutes)
 {
     if (targetid == playerid)
         return err(playerid, "You can't mute yourself!");
@@ -28,7 +28,7 @@ MutePlayer(const playerid, const targetid, const string: reason[], minutes)
     return 1;
 }
 
-UnMutePlayer(const playerid, const targetid)
+stock UnMutePlayer(const playerid, const targetid)
 {
     if (!Player_GetMuted(targetid)) {
         return err(playerid, "That player isn't muted!");

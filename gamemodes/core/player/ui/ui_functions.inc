@@ -2,7 +2,7 @@ static
     PlayerText: ui_textdraw[MAX_PLAYERS][14] = {PlayerText: INVALID_TEXT_DRAW, ...},
     ui_status[MAX_PLAYERS];
 
-UI_CreatePlayerTextDraws(const playerid, bool: status = true)
+stock UI_CreatePlayerTextDraws(const playerid, bool: status = true)
 {
     if (!status) {
         for (new i = 0; i < 14; ++i) {
@@ -155,7 +155,7 @@ UI_CreatePlayerTextDraws(const playerid, bool: status = true)
     return 1;
 }
 
-UI_UpdatePlayerTextDraw(const playerid, value)
+stock UI_UpdatePlayerTextDraw(const playerid, value)
 {
     switch (value) {
         case 1: {
@@ -186,14 +186,14 @@ UI_UpdatePlayerTextDraw(const playerid, value)
 /**
  * Get/Set functions
  */
-Player_SetUIStatus(const playerid, const int)
+stock Player_SetUIStatus(const playerid, const int)
 {
     ui_status[playerid] = int;
 
     return 1;
 }
 
-Player_GetUIStatus(const playerid)
+stock Player_GetUIStatus(const playerid)
 {
     return ui_status[playerid];
 }

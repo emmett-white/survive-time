@@ -12,7 +12,7 @@ enum {
   * <param name="adminid">The admin who assigns/removes admin to playerid</param>
   * <param name="level">the level of playerid's admin</param>
 */
-SetPlayerAdminLevel(const playerid, const adminid, level = 0, code)
+stock SetPlayerAdminLevel(const playerid, const adminid, level = 0, code)
 {
     if (!(0 <= level <= MAX_ADMIN_LEVEL)) {
         return err(adminid, "* Error: "WHITE"Admin level can't be less than 0 and greater than 4!");

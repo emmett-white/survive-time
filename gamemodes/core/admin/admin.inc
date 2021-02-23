@@ -68,12 +68,12 @@ Admin_SetCode(const playerid, const int)
 /**
  * Get functions
  */
-Admin_GetLevel(const playerid)
+stock Admin_GetLevel(const playerid)
 {
     return char_admin[playerid];
 }
 
-Admin_GetCode(const playerid)
+stock Admin_GetCode(const playerid)
 {
     return char_admin_code[playerid];
 }

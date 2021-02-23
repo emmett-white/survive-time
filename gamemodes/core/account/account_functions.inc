@@ -1,4 +1,4 @@
-CheckPlayerAccExists(const playerid)
+stock CheckPlayerAccExists(const playerid)
 {
     task_await(
         Task: MySQL_QueryS(
@@ -64,7 +64,7 @@ CheckPlayerAccExists(const playerid)
     return 1;
 }
 
-Auth_DoLogin(const playerid)
+stock Auth_DoLogin(const playerid)
 {
     task_yield(1);
         

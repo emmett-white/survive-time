@@ -15,9 +15,10 @@
  */
 const
 	MAX_PLAYERS = 10,
-	MAX_PLAYER_NAME = 25,
 	MAX_ACTORS = 20,
 	MAX_VEHICLES = 500;
+	
+#define MAX_PLAYER_NAME 25
 
 /**
  * YSI

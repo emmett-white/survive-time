@@ -1,7 +1,7 @@
 static
     PlayerText: ui_register[MAX_PLAYERS][12] = {PlayerText: INVALID_TEXT_DRAW, ...};
 
-UI_CreateRegisterTextDraws(const playerid, bool: status = true)
+stock UI_CreateRegisterTextDraws(const playerid, bool: status = true)
 {
     if (!status) {
         for (new i = 0; i < 12; ++i) {
@@ -138,7 +138,7 @@ UI_CreateRegisterTextDraws(const playerid, bool: status = true)
     return 1;
 }
 
-UI_ClickRegisterTextDraw(const playerid, const index)
+stock UI_ClickRegisterTextDraw(const playerid, const index)
 {
     return _:ui_register[playerid][index];
 }

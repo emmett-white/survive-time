@@ -1,7 +1,7 @@
 static
     PlayerText: ui_speedometer[MAX_PLAYERS][17] = {PlayerText: INVALID_TEXT_DRAW, ...};
     
-UI_CreatePlayerSpeedometer(const playerid, bool: status = true)
+stock UI_CreatePlayerSpeedometer(const playerid, bool: status = true)
 {
     if (!status) {
         for (new i = 0; i < 17; ++i) {
@@ -176,7 +176,7 @@ UI_CreatePlayerSpeedometer(const playerid, bool: status = true)
     return 1;
 }
 
-GetVehicleSpeed(vehicleid)
+stock GetVehicleSpeed(vehicleid)
 {
     static
         pos_y,
@@ -190,7 +190,7 @@ GetVehicleSpeed(vehicleid)
     return floatround(Float: veh_speed, floatround_round);
 }
 
-GetVehicleHP(vehicleid)
+stock GetVehicleHP(vehicleid)
 {
     static
         health;

@@ -4,7 +4,7 @@ static
 /**
  * Functions
  */
-UI_CreatePlayerHelpMsg(const playerid, bool: status = true)
+stock UI_CreatePlayerHelpMsg(const playerid, bool: status = true)
 {
     if (!status) {
         PlayerTextDrawHide(playerid, PlayerText: help_msg_textdraw[playerid]);
@@ -28,7 +28,7 @@ UI_CreatePlayerHelpMsg(const playerid, bool: status = true)
     return 1;
 }
 
-UI_ShowPlayerHelpMsg(const playerid, const string: fmt[], va_args<>)
+stock UI_ShowPlayerHelpMsg(const playerid, const string: fmt[], va_args<>)
 {
     PlayerTextDrawShow(playerid, PlayerText: help_msg_textdraw[playerid]);
     PlayerTextDrawSetString(playerid, PlayerText: help_msg_textdraw[playerid], va_return(fmt, va_start<2>));

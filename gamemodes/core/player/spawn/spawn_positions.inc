@@ -17,7 +17,7 @@ new Float: spawn_positions[][] = {
     { 1458.3473,-1025.9438,23.8281,178.0579 }
 };
 
-Player_SetSpawn(const playerid)
+stock Player_SetSpawn(const playerid)
 {
     new
         rand = random(sizeof spawn_positions);

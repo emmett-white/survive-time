@@ -3,7 +3,7 @@
   * <param name="playerid">player who will report player (targetid)</param>
   * <param name="reason">the reason why targetid will be reported</param>
 */
-ReportPlayer(const targetid, const playerid, const string: reason[])
+stock ReportPlayer(const targetid, const playerid, const string: reason[])
 {
     if (targetid == playerid) {
         return err(playerid, "You can't report yourself!");
@@ -19,7 +19,7 @@ ReportPlayer(const targetid, const playerid, const string: reason[])
     return 1;
 }
 
-ReportBug(const playerid, const string: reason[])
+stock ReportBug(const playerid, const string: reason[])
 {
 	task_await(
 		Task: MySQL_QueryS(

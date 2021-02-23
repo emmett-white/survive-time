@@ -15,7 +15,7 @@ new
 /**
  * Set functions
  */
-Player_SetScore(const playerid, const int)
+stock Player_SetScore(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -40,7 +40,7 @@ Player_SetScore(const playerid, const int)
     return 1;
 }
 
-Player_SetMoney(const playerid, const int)
+stock Player_SetMoney(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -63,7 +63,7 @@ Player_SetMoney(const playerid, const int)
     return 1;
 }
 
-Player_SetSkin(const playerid, const int)
+stock Player_SetSkin(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -91,17 +91,17 @@ Player_SetSkin(const playerid, const int)
 /**
  * Get functions
  */
-Player_GetScore(const playerid)
+stock Player_GetScore(const playerid)
 {
     return char_score[playerid];
 }
 
-Player_GetMoney(const playerid)
+stock Player_GetMoney(const playerid)
 {
     return char_money[playerid];
 }
 
-Player_GetSkin(const playerid)
+stock Player_GetSkin(const playerid)
 {
     return char_skin[playerid];
 }

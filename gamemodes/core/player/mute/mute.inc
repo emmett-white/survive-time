@@ -5,7 +5,7 @@ static
 /**
  * Set functions
  */
-Player_SetMuted(const playerid, const int)
+stock Player_SetMuted(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -28,7 +28,7 @@ Player_SetMuted(const playerid, const int)
     return 1;
 }
 
-Player_SetMutedMins(const playerid, const int)
+stock Player_SetMutedMins(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -54,12 +54,12 @@ Player_SetMutedMins(const playerid, const int)
 /**
  * Get functions
  */
-Player_GetMuted(const playerid)
+stock Player_GetMuted(const playerid)
 {
     return char_muted[playerid];
 }
 
-Player_GetMutedMins(const playerid)
+stock Player_GetMutedMins(const playerid)
 {
     return char_muted_mins[playerid];
 }

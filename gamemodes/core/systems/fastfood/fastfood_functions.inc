@@ -20,7 +20,7 @@ new
 /**
  * Functions
  */
-FF_Create(const playerid)
+stock FF_Create(const playerid)
 {
     new
         id = Iter_Alloc(Iter_Fastfoods),
@@ -54,7 +54,7 @@ FF_Create(const playerid)
     return 1;
 }
 
-FF_Nearby(const playerid)
+stock FF_Nearby(const playerid)
 {
     foreach (new i: Iter_Fastfoods) {
         if (IsPlayerInRangeOfPoint(playerid, Float: 2.0, ff_x[i], ff_y[i], ff_z[i])) {
@@ -65,7 +65,7 @@ FF_Nearby(const playerid)
     return 0;
 }
 
-FF_Goto(const playerid, const id)
+stock FF_Goto(const playerid, const id)
 {
     task_await(
         Task: MySQL_QueryS(

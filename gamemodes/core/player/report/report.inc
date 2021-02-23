@@ -4,7 +4,7 @@ static
 /**
  * Get/Set functions
  */
-Player_SetReportTime(const playerid, const int)
+stock Player_SetReportTime(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -15,7 +15,7 @@ Player_SetReportTime(const playerid, const int)
     return 1;
 }
 
-Player_GetReportTime(const playerid)
+stock Player_GetReportTime(const playerid)
 {
     return char_report_time[playerid];
 }

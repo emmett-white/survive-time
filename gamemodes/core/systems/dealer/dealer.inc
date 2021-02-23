@@ -4,7 +4,7 @@ static
 /**
  * Get/Set functions
  */
-Player_SetDrugs(const playerid, const int)
+stock Player_SetDrugs(const playerid, const int)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -24,7 +24,7 @@ Player_SetDrugs(const playerid, const int)
     return 1;
 }
 
-Player_GetDrugs(const playerid)
+stock Player_GetDrugs(const playerid)
 {
     return char_drugs[playerid];
 }

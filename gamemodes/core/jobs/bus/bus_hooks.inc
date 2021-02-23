@@ -108,7 +108,7 @@ hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
 
-Bus_ValidVeh(vehid)
+stock Bus_ValidVeh(vehid)
 {
     for (new i = 0; i < sizeof Bus_Vehicle; ++i) {
         if (vehid == Bus_Vehicle[i]) {

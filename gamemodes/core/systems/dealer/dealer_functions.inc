@@ -26,7 +26,7 @@ new
   * <param name="z">Dealer z pos</param>
   * <param name="a">Dealer angle</param>
 */
-Dealer_Create(const skin, const string: name[], Float: x, Float: y, Float: z, Float: a)
+stock Dealer_Create(const skin, const string: name[], Float: x, Float: y, Float: z, Float: a)
 {
     new
         id = Iter_Alloc(Iter_Dealers);
@@ -67,7 +67,7 @@ Dealer_Create(const skin, const string: name[], Float: x, Float: y, Float: z, Fl
     return 1;
 }
 
-Dealer_Goto(const playerid, const dealerid)
+stock Dealer_Goto(const playerid, const dealerid)
 {
     task_await(
         Task: MySQL_QueryS(
@@ -86,7 +86,7 @@ Dealer_Goto(const playerid, const dealerid)
     return 1;
 }
 
-Dealer_Nearby(const playerid)
+stock Dealer_Nearby(const playerid)
 {
     foreach (new i: Iter_Dealers) {
         if (IsPlayerInRangeOfPoint(playerid, Float: 2.0, dealer_x[i], dealer_y[i], dealer_z[i])) {
@@ -97,7 +97,7 @@ Dealer_Nearby(const playerid)
     return 0;
 }
 
-Player_DrugEffects(const playerid, bool: status = true)
+stock Player_DrugEffects(const playerid, bool: status = true)
 {
     if (!status) {
         SetPlayerWeather(playerid, 1);

@@ -239,3 +239,26 @@ ADMIN_COMMAND:[e_ADMIN_LEVEL_1]unfreeze(playerid, const params[])
 
     return 1;
 }
+
+ADMIN_COMMAND:[e_ADMIN_LEVEL_1]offban(playerid, const params[])
+{
+    extract params -> new string: name[MAX_PLAYER_NAME], string: reason[MAX_REASON_TEXT]; else {
+        return usage(playerid, "/offban [name] [reason]");
+    }
+
+    task_await(
+        Task: MySQL_QueryS(
+            String: str_format(
+                "SELECT * FROM accounts WHERE account_name = '%e'", name
+            )
+        )
+    );
+
+    if (!cache_num_rows()) {
+        return err(playerid, "That account doesn't exists!");
+    }
+
+    OffBan(name, playerid, reason);
+
+    return 1;
+}

@@ -9,7 +9,7 @@ enum E_PLAYER_JOBS {
 };
 
 // * Get/Set functions *
-Player_SetJob(const playerid, const int)
+stock Player_SetJob(const playerid, const int)
 {
     char_job[playerid] = int;
 
@@ -23,19 +23,19 @@ Player_SetJob(const playerid, const int)
     return 1;
 }
 
-Player_SetJobEquipment(const playerid, bool: status = true)
+stock Player_SetJobEquipment(const playerid, bool: status = true)
 {
     Bit_Set(JOB_EQUIPMENT, playerid, status);
     
     return 1;
 }
 
-Player_GetJob(const playerid)
+stock Player_GetJob(const playerid)
 {
     return char_job[playerid];
 }
 
-Player_GetJobEquipment(const playerid)
+stock Player_GetJobEquipment(const playerid)
 {
     return Bit_Get(JOB_EQUIPMENT, playerid);
 }

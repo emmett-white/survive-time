@@ -4,7 +4,7 @@ static
 /**
  * Get/Set functions
  */
-Player_SetWarns(const playerid, const warns)
+stock Player_SetWarns(const playerid, const warns)
 {
     if (!IsPlayerConnected(playerid)) {
         return 0;
@@ -15,7 +15,7 @@ Player_SetWarns(const playerid, const warns)
     return 1;
 }
 
-Player_GetWarns(const playerid)
+stock Player_GetWarns(const playerid)
 {
     return char_warn_num[playerid];
 }
