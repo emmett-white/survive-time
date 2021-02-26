@@ -8,10 +8,6 @@ public OnDealerCreated(const dealerid)
 forward CheckDealerExists();
 public CheckDealerExists()
 {
-    if (!cache_num_rows()) {
-        return print("err: 0 dealers found in database!");
-    }
-
     for (new i; i < cache_num_rows(); ++i) {
         new id = Iter_Alloc(Iter_Dealers);
         
